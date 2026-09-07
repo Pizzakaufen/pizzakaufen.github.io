@@ -3,7 +3,7 @@
 Persönliche Website: Startseite mit allen Abschnitten, Impressum, Datenschutz und eigene
 404-Seite. Statisch gebaut, kein Backend, kein Tracking.
 
-Stack: React-API (im Build als Preact-Runtime), TypeScript, Vite, Tailwind CSS.
+Stack: HTML, CSS und Vanilla JavaScript. Keine Build-Tools und keine Framework-Abhängigkeiten.
 
 ## Befehle
 
