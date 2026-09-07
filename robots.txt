@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Fehlerseite nicht indexieren
+Disallow: /404.html
+
+# Domain in src/config/site.config.ts eintragen, dann steht hier die echte Sitemap-URL
+Sitemap: https://example.com/sitemap.xml

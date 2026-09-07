@@ -1,0 +1,22 @@
+# Hagen Böttcher
+
+> Persönliche Website von Hagen Böttcher (NanoPizza) aus Dresden: Softwareentwicklung mit C# und .NET, FiveM-Ressourcen mit Lua und ND_Core, die Android-App eDienstplanReload sowie Webprojekte mit React und Vite.
+
+Persönliche Website von Hagen Böttcher, online auch als NanoPizza und DexPizza (Dresden, Deutschland). Developer & Creator mit Schwerpunkt auf C#, Lua, FiveM, Android und Webentwicklung. Statische Seite, kein Tracking, keine Anmeldung.
+
+## Seiten
+- [Hagen Böttcher — Developer & Creator aus Dresden](https://example.com/): Persönliche Website von Hagen Böttcher (NanoPizza) aus Dresden: Softwareentwicklung mit C# und .NET, FiveM-Ressourcen mit Lua und ND_Core, die Android-App eDienstplanReload sowie Webprojekte mit React und Vite.
+- [Impressum | Hagen Böttcher](https://example.com/impressum/): Impressum und Anbieterkennzeichnung der persönlichen Website von Hagen Böttcher: verantwortliche Person, Kontaktmöglichkeit und Hinweise zur Haftung für Inhalte und Links.
+- [Datenschutz | Hagen Böttcher](https://example.com/datenschutz/): Datenschutzhinweise der Website von Hagen Böttcher: welche Daten beim Aufruf verarbeitet werden, warum kein Tracking eingesetzt wird und welche Rechte du nach DSGVO hast.
+
+## Abschnitte der Startseite
+- [Über mich](https://example.com/#about): Vollständiges Profil: Statement, Schwerpunkte, Werdegang (Dinglingerschule Dresden, Berufsvorbereitungsjahr, BBW Leipzig, Praktikum bei Lloyd’s Café & Bar), Interessen und Ziele.
+- [Skills](https://example.com/#skills): Programmiersprachen C#, Lua, JavaScript, TypeScript, HTML, CSS; Frameworks .NET, React, Vite, Jetpack Compose, ND_Core; Werkzeuge Git, GitHub, Visual Studio, txAdmin, Pterodactyl, OpenCore, Linux-Terminal; Plattformen Windows, Linux, Android, FiveM, FXServer, Raspberry Pi, macOS; Sprachen Deutsch und Englisch.
+- [Projekte](https://example.com/#projects): eDienstplanReload (Android, Jetpack Compose, Material 3), FiveM Development (Lua, C#, FXServer, ND_Core, NUI), diese Website (React, TypeScript, Vite, Tailwind CSS) sowie weitere Arbeiten aus den Bereichen Server, Linux und Systemoptimierung.
+- [GitHub](https://example.com/#github): Veröffentlichte Projekte und Scripts unter github.com/Pizzakaufen.
+- [Kontakt](https://example.com/#contact): Kontaktwege über GitHub, E-Mail, Discord (Pizzakaufen) und TikTok (@PizzakaufenPro).
+
+## Hinweise
+- Sprache: Deutsch
+- Inhalte sind öffentlich; es werden keine personenbezogenen Daten erhoben.
+- Die Domain ist noch nicht konfiguriert (Platzhalter example.com in src/config/site.config.ts).
