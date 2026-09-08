@@ -5,14 +5,10 @@ Persönliche Website: Startseite mit allen Abschnitten, Impressum, Datenschutz u
 
 Stack: HTML, CSS und Vanilla JavaScript. Keine Build-Tools und keine Framework-Abhängigkeiten.
 
-## Befehle
+## Betrieb
 
-```bash
-npm install
-npm run dev       # Entwicklung
-npm run build     # Typprüfung + Production-Build nach dist/
-npm run preview   # Production-Build lokal ansehen
-```
+Die Website ist vollständig statisch und benötigt weder Vite noch React oder TypeScript. `index.html`
+kann direkt geöffnet oder der Projektordner auf einen beliebigen Static-Host gelegt werden.
 
 ## Was noch eingetragen werden muss
 
@@ -42,16 +38,15 @@ Das Alter wird aus dem Geburtsdatum berechnet und bleibt dadurch automatisch akt
 Die Domain kann alternativ beim Build gesetzt werden, ohne die Datei zu ändern:
 
 ```bash
-SITE_URL=https://meine-domain.de npm run build
+Die Domain ist in den statischen HTML-Metadaten hinterlegt.
 ```
 
-Aus diesem einen Wert entstehen automatisch: Canonical-Tags, Open-Graph- und Twitter-URLs,
-`robots.txt`, `sitemap.xml` und `llms.txt`.
+Die Seite wird ohne Build-Schritt veröffentlicht.
 
 ## Veröffentlichen über GitHub Pages
 
 Der Workflow `.github/workflows/deploy.yml` baut das Projekt und veröffentlicht den Ordner
-`dist/` automatisch. Einmalige Einrichtung:
+Die GitHub-Pages-Bereitstellung lädt den Repository-Root direkt hoch. Eine einmalige Einrichtung:
 
 1. Neues öffentliches Repository mit dem Namen `pizzakaufen.github.io` anlegen
    (Benutzername + `.github.io`, damit die Seite direkt unter der Wurzel liegt).
@@ -112,7 +107,7 @@ im Quelltext vorhanden.
 
 ## Hosting
 
-`dist/` auf einen beliebigen Static-Host legen. Zwei Punkte beim Server einstellen:
+Den Projektordner auf einen beliebigen Static-Host legen. Zwei Punkte beim Server einstellen:
 
 - unbekannte URLs auf `404.html` mit Statuscode 404 ausliefern
   (Netlify: `/* /404.html 404`, Nginx: `error_page 404 /404.html;`)
