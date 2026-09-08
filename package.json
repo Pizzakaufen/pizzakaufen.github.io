@@ -4,6 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "build": "node build.mjs",
     "serve": "npx --yes serve ."
   }
 }
