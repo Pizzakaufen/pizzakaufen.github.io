@@ -1,22 +1,37 @@
 # Hagen Böttcher
 
-> Persönliche Website von Hagen Böttcher (NanoPizza) aus Dresden: Softwareentwicklung mit C# und .NET, FiveM-Ressourcen mit Lua und ND_Core, die Android-App eDienstplanReload sowie Webprojekte mit React und Vite.
+> Persönliche Website von Hagen Böttcher (Pizzakaufen) aus Dresden. Developer & Creator mit Schwerpunkt auf C#, Lua, FiveM, Android, Webentwicklung und technischen Projekten.
 
-Persönliche Website von Hagen Böttcher, online auch als NanoPizza und DexPizza (Dresden, Deutschland). Developer & Creator mit Schwerpunkt auf C#, Lua, FiveM, Android und Webentwicklung. Statische Seite, kein Tracking, keine Anmeldung.
+## Profil
+- [Startseite](https://pizzakaufen.github.io/): Persönliches Portfolio von Hagen Böttcher.
+- [Über mich](https://pizzakaufen.github.io/#about): Profil, Interessen, Ziele, Ausbildung und Entwicklung vom Berufsvorbereitungsjahr über BBW Leipzig bis zu eigenen Softwareprojekten.
+- Alter: 19 Jahre
+- Standort: Dresden, Deutschland
+- Sprachen: Deutsch und Englisch
 
-## Seiten
-- [Hagen Böttcher — Developer & Creator aus Dresden](https://example.com/): Persönliche Website von Hagen Böttcher (NanoPizza) aus Dresden: Softwareentwicklung mit C# und .NET, FiveM-Ressourcen mit Lua und ND_Core, die Android-App eDienstplanReload sowie Webprojekte mit React und Vite.
-- [Impressum | Hagen Böttcher](https://example.com/impressum/): Impressum und Anbieterkennzeichnung der persönlichen Website von Hagen Böttcher: verantwortliche Person, Kontaktmöglichkeit und Hinweise zur Haftung für Inhalte und Links.
-- [Datenschutz | Hagen Böttcher](https://example.com/datenschutz/): Datenschutzhinweise der Website von Hagen Böttcher: welche Daten beim Aufruf verarbeitet werden, warum kein Tracking eingesetzt wird und welche Rechte du nach DSGVO hast.
+## Skills
+- Programming: C#, Lua, JavaScript, TypeScript, HTML, CSS
+- Frameworks: .NET, React, Vite, Jetpack Compose, Material 3, ND_Core
+- Platforms: Windows, Linux, Android, FiveM, FXServer, Raspberry Pi, macOS
+- Tools: Git, GitHub, Visual Studio, txAdmin, Pterodactyl, OpenCore, Linux-Terminal
 
-## Abschnitte der Startseite
-- [Über mich](https://example.com/#about): Vollständiges Profil: Statement, Schwerpunkte, Werdegang (Dinglingerschule Dresden, Berufsvorbereitungsjahr, BBW Leipzig, Praktikum bei Lloyd’s Café & Bar), Interessen und Ziele.
-- [Skills](https://example.com/#skills): Programmiersprachen C#, Lua, JavaScript, TypeScript, HTML, CSS; Frameworks .NET, React, Vite, Jetpack Compose, ND_Core; Werkzeuge Git, GitHub, Visual Studio, txAdmin, Pterodactyl, OpenCore, Linux-Terminal; Plattformen Windows, Linux, Android, FiveM, FXServer, Raspberry Pi, macOS; Sprachen Deutsch und Englisch.
-- [Projekte](https://example.com/#projects): eDienstplanReload (Android, Jetpack Compose, Material 3), FiveM Development (Lua, C#, FXServer, ND_Core, NUI), diese Website (React, TypeScript, Vite, Tailwind CSS) sowie weitere Arbeiten aus den Bereichen Server, Linux und Systemoptimierung.
-- [GitHub](https://example.com/#github): Veröffentlichte Projekte und Scripts unter github.com/Pizzakaufen.
-- [Kontakt](https://example.com/#contact): Kontaktwege über GitHub, E-Mail, Discord (Pizzakaufen) und TikTok (@PizzakaufenPro).
+## Projekte
+- [Projekte](https://pizzakaufen.github.io/#projects): eDienstplanReload, FiveM Development, diese Website und weitere Arbeiten.
+- eDienstplanReload: Android-Dienstplan-App mit Jetpack Compose, Material 3, Offline-Speicherung, Themes und API-Komponenten. In Weiterentwicklung.
+- FiveM Development: Eigene Scripts, Ressourcen, HUDs, NUI-Oberflächen, Gameplay-Systeme, Server-/Client-Logik und ND_Core-Integration. Laufende Entwicklung.
+- Diese Website: Statische persönliche Portfolioseite mit HTML, CSS und Vanilla JavaScript. Aktiv.
+
+## Kontakt
+- [GitHub](https://github.com/Pizzakaufen): Projekte, Scripts und Entwicklungen.
+- [TikTok](https://www.tiktok.com/@PizzakaufenPro): @PizzakaufenPro
+- [E-Mail](mailto:hagen@con-meo.de): hagen@con-meo.de
+- Discord: Pizzakaufen (Benutzername, kein öffentlicher Direktlink hinterlegt)
+
+## Rechtliches
+- [Impressum](https://pizzakaufen.github.io/impressum/)
+- [Datenschutz](https://pizzakaufen.github.io/datenschutz/)
 
 ## Hinweise
 - Sprache: Deutsch
-- Inhalte sind öffentlich; es werden keine personenbezogenen Daten erhoben.
-- Die Domain ist noch nicht konfiguriert (Platzhalter example.com in src/config/site.config.ts).
+- Es werden keine Analyse- oder Tracking-Cookies eingesetzt.
+- Projekt-Repositorys, Demos, Screenshots und Changelogs sind derzeit nicht öffentlich hinterlegt.

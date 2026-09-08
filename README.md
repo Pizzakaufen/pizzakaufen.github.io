@@ -7,8 +7,8 @@ Stack: HTML, CSS und Vanilla JavaScript. Keine Build-Tools und keine Framework-A
 
 ## Betrieb
 
-Die Website ist vollständig statisch und benötigt weder Vite noch React oder TypeScript. `index.html`
-kann direkt geöffnet oder der Projektordner auf einen beliebigen Static-Host gelegt werden.
+Die Website ist vollständig statisch und benötigt weder Vite noch React oder TypeScript. `npm run build`
+erzeugt den auslieferbaren Ordner `dist/`; dieser kann auf einen beliebigen Static-Host gelegt werden.
 
 ## Was noch eingetragen werden muss
 

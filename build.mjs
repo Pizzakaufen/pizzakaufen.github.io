@@ -1,4 +1,4 @@
-import { cp, mkdir, rm } from 'node:fs/promises';
+import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 
 const root = new URL('.', import.meta.url);
 const dist = new URL('./dist/', root);
@@ -18,5 +18,11 @@ for (const directory of ['impressum', 'datenschutz']) {
 }
 
 await cp(new URL('./public/', root), new URL('./', dist), { recursive: true, force: true });
+
+for (const file of ['index.html', '404.html', 'impressum/index.html', 'datenschutz/index.html']) {
+  const target = new URL(`./${file}`, dist);
+  const html = await readFile(target, 'utf8');
+  await writeFile(target, html.replace(/\s*<script data-pplx-inline-edit>[\s\S]*?<\/script>/, '\n'), 'utf8');
+}
 
 console.log('Static site copied to dist/.');
