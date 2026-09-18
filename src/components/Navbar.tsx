@@ -81,7 +81,7 @@ export function Navbar({ theme, onToggleTheme, pageKey }: Props) {
                   <a
                     href={item.id === 'home' ? urls.home : urls.section(item.id)}
                     aria-current={isActive ? 'page' : undefined}
-                    className="relative inline-block rounded-full px-3.5 py-2 transition-colors"
+                    className="relative inline-block rounded-full px-3.5 py-2 transition-all duration-200 hover:bg-[color:var(--accent-soft)] focus-visible:outline-2 focus-visible:outline-offset-2"
                     style={{
                       fontSize: 'var(--text-sm)',
                       color: isActive ? 'var(--color-text)' : 'var(--color-text-muted)',
@@ -116,7 +116,7 @@ export function Navbar({ theme, onToggleTheme, pageKey }: Props) {
             aria-label={open ? 'Menü schließen' : 'Menü öffnen'}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface-2)] md:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-text)] transition-all hover:bg-[color:var(--color-surface-2)] focus-visible:outline-2 focus-visible:outline-offset-2 md:hidden"
           >
             {open ? <CloseIcon /> : <MenuIcon />}
           </button>
@@ -137,7 +137,7 @@ export function Navbar({ theme, onToggleTheme, pageKey }: Props) {
                 <a
                   href={item.id === 'home' ? urls.home : urls.section(item.id)}
                   onClick={() => setOpen(false)}
-                  className="flex min-h-[52px] items-center justify-between rounded-2xl px-4 text-[color:var(--color-text)] transition-colors hover:bg-[color:var(--color-surface-2)]"
+                  className="flex min-h-[52px] items-center justify-between rounded-2xl px-4 text-[color:var(--color-text)] transition-all hover:bg-[color:var(--color-surface-2)] focus-visible:outline-2 focus-visible:outline-offset-2"
                   style={{ fontSize: 'var(--text-base)' }}
                 >
                   {item.label}
@@ -172,7 +172,7 @@ function IconButton({
       title={label}
       aria-label={label}
       aria-pressed={pressed}
-      className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--color-border)] transition-colors hover:bg-[color:var(--color-surface-2)]"
+      className="grid h-11 w-11 place-items-center rounded-full border border-[color:var(--color-border)] transition-all hover:bg-[color:var(--color-surface-2)] focus-visible:outline-2 focus-visible:outline-offset-2"
       style={{ color: pressed ? 'var(--accent-color)' : 'var(--color-text-muted)' }}
     >
       {children}

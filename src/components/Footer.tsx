@@ -3,7 +3,7 @@ import { identity, internalLinks, type PageKey } from '../config/site.config';
 import { Logo } from './Logo';
 
 const linkClass =
-  'text-[color:var(--color-text-muted)] transition-colors hover:text-[color:var(--accent-color)]';
+  'text-[color:var(--color-text-muted)] transition-all hover:text-[color:var(--accent-color)] hover:translate-x-1 focus-visible:outline-offset-2 focus-visible:outline-2';
 
 export function Footer({ pageKey }: { pageKey: PageKey }) {
   const urls = internalLinks(pageKey);
@@ -15,7 +15,7 @@ export function Footer({ pageKey }: { pageKey: PageKey }) {
     >
       <div className="container-page grid gap-10 sm:grid-cols-[1.2fr_1fr_1fr]">
         <div>
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 group cursor-pointer transition-all hover:opacity-80">
             <Logo size={26} />
             <span className="font-medium" style={{ fontSize: 'var(--text-base)' }}>
               {identity.fullName}

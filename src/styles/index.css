@@ -82,6 +82,38 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+    background-clip: padding-box;
+  }
+
+  /* Nur Focus-Rings bei Keyboard-Navigation zeigen */
+  html:not(.keyboard-nav) *:focus-visible {
+    outline: none;
+  }
+
+  html.keyboard-nav *:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
   body {
     background-color: var(--color-bg);
     color: var(--color-text);
@@ -129,6 +161,7 @@
   .section {
     padding-block: clamp(var(--space-16), 9vw, var(--space-24));
     scroll-margin-top: var(--nav-height);
+    contain: layout style;
   }
 
   /* dezentes Glass — nur für Nav und Karten-Hintergrund */
@@ -147,13 +180,15 @@
     transition:
       transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
       border-color 0.35s ease,
-      background-color 0.35s ease;
+      background-color 0.35s ease,
+      box-shadow 0.35s ease;
   }
 
   .card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     border-color: var(--accent-ring);
     background: var(--color-surface-2);
+    box-shadow: 0 8px 24px rgba(255, 106, 61, 0.12);
   }
 
   .btn {
@@ -171,7 +206,8 @@
       transform 0.2s ease,
       background-color 0.2s ease,
       border-color 0.2s ease,
-      color 0.2s ease;
+      color 0.2s ease,
+      box-shadow 0.2s ease;
     white-space: nowrap;
   }
 
@@ -179,13 +215,21 @@
     transform: scale(0.98);
   }
 
+  .btn:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+
   .btn-primary {
     background: var(--accent-color);
     color: #ffffff;
+    box-shadow: 0 4px 12px rgba(255, 106, 61, 0.3);
   }
 
   .btn-primary:hover {
     background: var(--accent-strong);
+    box-shadow: 0 6px 16px rgba(255, 106, 61, 0.4);
+    transform: translateY(-2px);
   }
 
   .btn-ghost {
@@ -219,6 +263,14 @@
     border: 1px solid var(--color-border);
     color: var(--color-text-muted);
     background: var(--color-surface);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .badge:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background: var(--accent-soft);
+    transform: translateY(-2px);
   }
 
   /* dezenter Akzent-Schimmer hinter dem Hero */
@@ -252,6 +304,16 @@
     color: var(--accent-color);
     text-decoration: underline;
     text-underline-offset: 3px;
+    transition: all 0.3s ease;
+  }
+
+  .legal-body a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  .legal-body a:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
   }
 
   .legal-body code {
@@ -303,8 +365,88 @@
   }
 }
 
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
 .animate-fade-up {
   animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
 }
 
 /* Nutzer-Einstellung respektieren + „Animationen reduzieren"-Schalter */
@@ -335,4 +477,46 @@ html[data-motion='reduced'] *::after {
 html[data-motion='reduced'] .reveal {
   opacity: 1;
   transform: none;
+}
+
+/* =========================================================
+   Print Styles — bessere Druckqualität
+   ========================================================= */
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Hide navigation and footer */
+  header,
+  footer,
+  nav,
+  .btn {
+    display: none !important;
+  }
 }

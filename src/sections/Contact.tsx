@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { site } from '../data/site';
 import { DiscordIcon, GitHubIcon, MailIcon, TikTokIcon } from '../components/Icons';
 import { Reveal } from '../components/Reveal';
@@ -11,6 +12,7 @@ type Channel = {
   hint?: string;
   Icon: typeof GitHubIcon;
   external?: boolean;
+  copyable?: boolean;
 };
 
 const channels: Channel[] = [
@@ -26,12 +28,14 @@ const channels: Channel[] = [
     value: site.handles.email,
     href: site.links.email,
     Icon: MailIcon,
+    copyable: true,
   },
   {
     label: 'Discord',
     value: site.handles.discord,
     hint: 'Benutzername',
     Icon: DiscordIcon,
+    copyable: true,
   },
   {
     label: 'TikTok',
@@ -43,6 +47,18 @@ const channels: Channel[] = [
 ];
 
 export function Contact() {
+  const [copiedLabel, setCopiedLabel] = useState<string | null>(null);
+
+  const handleCopy = async (label: string, value: string) => {
+    try {
+      await navigator.clipboard.writeText(value.replace('mailto:', ''));
+      setCopiedLabel(label);
+      setTimeout(() => setCopiedLabel(null), 2000);
+    } catch {
+      console.error('Failed to copy');
+    }
+  };
+
   return (
     <section id="contact" className="section">
       <div className="container-page">
@@ -53,7 +69,8 @@ export function Contact() {
         />
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {channels.map(({ label, value, href, hint, Icon, external }, i) => {
+          {channels.map(({ label, value, href, hint, Icon, external, copyable }, i) => {
+            const isCopied = copiedLabel === label;
             const inner = (
               <>
                 <span
@@ -70,20 +87,26 @@ export function Contact() {
                     className="mt-0.5 block break-words font-mono text-[color:var(--color-text-muted)]"
                     style={{ fontSize: 'var(--text-xs)' }}
                   >
-                    {value}
-                    {hint ? (
-                      <span className="text-[color:var(--color-text-faint)]"> · {hint}</span>
-                    ) : null}
+                    {isCopied ? (
+                      <span style={{ color: 'var(--accent-color)' }}>✓ Kopiert!</span>
+                    ) : (
+                      <>
+                        {value}
+                        {hint ? (
+                          <span className="text-[color:var(--color-text-faint)]"> · {hint}</span>
+                        ) : null}
+                      </>
+                    )}
                   </span>
                 </span>
               </>
             );
 
-            const cardClass = 'card group flex h-full min-h-[104px] flex-col justify-between p-5 sm:p-6';
+            const cardClass = 'card group flex h-full min-h-[104px] flex-col justify-between p-5 sm:p-6 transition-all';
 
             return (
               <Reveal key={label} delay={i * 80}>
-                {href ? (
+                {href && !copyable ? (
                   <a
                     href={href}
                     {...(external ? { target: '_blank', rel: 'noopener noreferrer me' } : {})}
@@ -92,6 +115,15 @@ export function Contact() {
                   >
                     {inner}
                   </a>
+                ) : copyable ? (
+                  <button
+                    onClick={() => handleCopy(label, value)}
+                    className={`${cardClass} text-left cursor-pointer hover:bg-[color:var(--accent-soft)]`}
+                    aria-label={`${label} kopieren: ${value}`}
+                    type="button"
+                  >
+                    {inner}
+                  </button>
                 ) : (
                   <div className={cardClass} aria-label={`${label}: ${value}`}>
                     {inner}
