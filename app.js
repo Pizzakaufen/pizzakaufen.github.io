@@ -46,6 +46,18 @@ const interests = ['FiveM & Roleplay', 'eigene technische Projekte', 'Computer &
 const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const badges = (items) => items.map((item) => `<span class="badge">${esc(item)}</span>`).join('');
 const externalAttrs = (item) => item.external ? ' target="_blank" rel="noopener noreferrer"' : '';
+function safeGet(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+function safeSet(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch {}
+}
 
 function header() {
   const links = [['home', 'Home'], ['about', 'Über mich'], ['skills', 'Skills'], ['projects', 'Projekte'], ['contact', 'Kontakt']];
@@ -77,26 +89,35 @@ function legalPage(kind) {
 }
 function notFoundPage() { return `${header()}<main id="main"><article class="legal not-found"><div class="container legal-copy"><span class="eyebrow">404 — Nicht gefunden</span><h1>Diese Seite wurde nicht gefunden.</h1><p class="lead">Vielleicht bist du hier falsch abgebogen.</p><div class="actions"><a class="button primary" href="./">Zur Startseite <span aria-hidden="true">→</span></a><a class="button" href="./#projects">Projekte ansehen</a></div></div></article></main>${footer()}`; }
 
-function getThemePreference() { return localStorage.getItem('theme-preference') || 'system'; }
+function getThemePreference() { return safeGet('theme-preference') || 'system'; }
 function applyTheme(preference) {
   document.documentElement.dataset.theme = preference;
   const button = document.querySelector('#theme-toggle');
   const label = preference === 'system' ? 'System' : preference === 'light' ? 'Hell' : 'Dunkel';
   button?.setAttribute('aria-label', `Farbschema: ${label}`); button?.setAttribute('title', `Farbschema: ${label}`);
 }
+function revealTargets() {
+  return document.querySelectorAll('.section, .hero-copy, .hero-profile, .project-card, .card, .skill-card, .contact-card');
+}
 function init() {
   const path = window.location.pathname;
   document.body.innerHTML = path.endsWith('/404.html') ? notFoundPage() : path.includes('/impressum') ? legalPage('imprint') : path.includes('/datenschutz') ? legalPage('privacy') : homePage();
   let theme = getThemePreference(); applyTheme(theme);
-  document.querySelector('#theme-toggle')?.addEventListener('click', () => { theme = theme === 'system' ? 'light' : theme === 'light' ? 'dark' : 'system'; localStorage.setItem('theme-preference', theme); applyTheme(theme); });
+  document.querySelector('#theme-toggle')?.addEventListener('click', () => { theme = theme === 'system' ? 'light' : theme === 'light' ? 'dark' : 'system'; safeSet('theme-preference', theme); applyTheme(theme); });
   const nav = document.querySelector('.site-nav'); const menu = document.querySelector('.nav-links');
   document.querySelector('#menu-toggle')?.addEventListener('click', (event) => { const button = event.currentTarget; const open = menu.classList.toggle('open'); button.setAttribute('aria-expanded', String(open)); button.setAttribute('aria-label', open ? 'Navigation schließen' : 'Navigation öffnen'); nav.classList.toggle('open', open); });
   menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { menu.classList.remove('open'); nav.classList.remove('open'); document.querySelector('#menu-toggle')?.setAttribute('aria-expanded', 'false'); }));
-  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 16), { passive: true });
+  const syncScrolledState = () => nav?.classList.toggle('scrolled', window.scrollY > 16);
+  syncScrolledState();
+  window.addEventListener('scroll', syncScrolledState, { passive: true });
   const sections = [...document.querySelectorAll('main section[id]')];
-  const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => document.querySelectorAll(`[data-nav="${entry.target.id}"]`).forEach((link) => link.classList.toggle('active', entry.isIntersecting))), { rootMargin: '-35% 0px -55% 0px' });
-  sections.forEach((section) => sectionObserver.observe(section));
-  const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }), { threshold: .08 });
-  document.querySelectorAll('.section, .hero-copy, .hero-profile, .project-card, .card, .skill-card, .contact-card').forEach((item) => revealObserver.observe(item));
+  if (typeof IntersectionObserver === 'undefined') {
+    revealTargets().forEach((item) => item.classList.add('visible'));
+  } else {
+    const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => document.querySelectorAll(`[data-nav="${entry.target.id}"]`).forEach((link) => link.classList.toggle('active', entry.isIntersecting))), { rootMargin: '-35% 0px -55% 0px' });
+    sections.forEach((section) => sectionObserver.observe(section));
+    const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }), { threshold: .08 });
+    revealTargets().forEach((item) => revealObserver.observe(item));
+  }
 }
 init();
