@@ -169,13 +169,20 @@ function initNavScrollFallback(sections = [...document.querySelectorAll('main se
   window.addEventListener('scroll', syncActiveState, { passive: true });
   window.addEventListener('resize', syncActiveState, { passive: true });
 }
+function createFrameScheduler() {
+  return typeof requestAnimationFrame === 'function'
+    ? { schedule: (handler) => requestAnimationFrame(handler), clear: (handle) => cancelAnimationFrame(handle) }
+    : { schedule: (handler) => window.setTimeout(handler, 16), clear: (handle) => window.clearTimeout(handle) };
+}
 function rafSync(callback) {
-  let frame = 0;
-  const scheduleFrame = typeof requestAnimationFrame === 'function' ? requestAnimationFrame : (handler) => window.setTimeout(handler, 16);
+  let frame = null;
+  const scheduler = createFrameScheduler();
   return () => {
-    if (frame) return;
-    frame = scheduleFrame(() => {
-      frame = 0;
+    if (frame !== null) return;
+    frame = scheduler.schedule(() => {
+      const handle = frame;
+      frame = null;
+      scheduler.clear(handle);
       callback();
     });
   };
