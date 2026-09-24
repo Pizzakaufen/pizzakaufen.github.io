@@ -177,14 +177,13 @@ function createFrameScheduler() {
 function rafSync(callback) {
   let frame = null;
   const scheduler = createFrameScheduler();
+  const flush = () => {
+    frame = null;
+    callback();
+  };
   return () => {
     if (frame !== null) return;
-    frame = scheduler.schedule(() => {
-      const handle = frame;
-      frame = null;
-      scheduler.clear(handle);
-      callback();
-    });
+    frame = scheduler.schedule(flush);
   };
 }
 function initNavObserver() {
