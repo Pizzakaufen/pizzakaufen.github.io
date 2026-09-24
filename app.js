@@ -141,34 +141,49 @@ function initNavigation() {
   syncScrolledState();
   window.addEventListener('scroll', syncScrolledState, { passive: true });
 }
-function syncActiveNav(sectionId, active) {
-  document.querySelectorAll(`[data-nav="${sectionId}"]`).forEach((link) => link.classList.toggle('active', active));
+function setActiveNav(sectionId) {
+  document.querySelectorAll('[data-nav]').forEach((link) => link.classList.toggle('active', link.dataset.nav === sectionId));
 }
-function syncActiveNavFallback(sections) {
+function getActiveSection(sections) {
   const threshold = window.innerHeight * .35;
   let activeSection = sections[0];
   sections.forEach((section) => {
     if (section.getBoundingClientRect().top <= threshold) activeSection = section;
   });
-  if (!activeSection) return;
-  document.querySelectorAll('[data-nav]').forEach((link) => link.classList.toggle('active', link.dataset.nav === activeSection.id));
+  return activeSection;
+}
+function syncActiveNav(sections) {
+  const activeSection = getActiveSection(sections);
+  if (activeSection) setActiveNav(activeSection.id);
+}
+function rafSync(callback) {
+  let frame = 0;
+  return () => {
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      callback();
+    });
+  };
 }
 function initNavObserver() {
   const sections = [...document.querySelectorAll('main section[id]')];
   if (!sections.length) return;
+  const syncActiveState = rafSync(() => syncActiveNav(sections));
   if (typeof IntersectionObserver === 'undefined') {
-    syncActiveNavFallback(sections);
-    window.addEventListener('scroll', () => syncActiveNavFallback(sections), { passive: true });
+    syncActiveNav(sections);
+    window.addEventListener('scroll', syncActiveState, { passive: true });
     return;
   }
   const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
     try {
-      syncActiveNav(entry.target.id, entry.isIntersecting);
+      if (entry.isIntersecting) syncActiveState();
     } catch (error) {
       console.warn('Navigationsstatus konnte nicht synchronisiert werden.', error);
     }
   }), { rootMargin: '-35% 0px -55% 0px' });
   sections.forEach((section) => sectionObserver.observe(section));
+  syncActiveNav(sections);
 }
 function initRevealObserver() {
   if (typeof IntersectionObserver === 'undefined') {
