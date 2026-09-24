@@ -195,7 +195,10 @@ function rafSync(callback) {
 }
 function initNavObserver() {
   const sections = [...document.querySelectorAll('main section[id]')];
-  if (!sections.length) return;
+  if (!sections.length) {
+    initNavScrollFallback(sections);
+    return;
+  }
   if (typeof IntersectionObserver === 'undefined') {
     initNavScrollFallback(sections);
     return;
