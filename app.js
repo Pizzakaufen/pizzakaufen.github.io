@@ -156,13 +156,16 @@ function syncActiveNav(sections) {
   const activeSection = getActiveSection(sections);
   if (activeSection) setActiveNav(activeSection.id);
 }
-let navScrollFallbackActive = false;
+let navScrollFallbackHandlers = null;
 function initNavScrollFallback(sections = [...document.querySelectorAll('main section[id]')]) {
   if (!sections.length) return;
   const syncActiveState = rafSync(() => syncActiveNav(sections));
   syncActiveNav(sections);
-  if (navScrollFallbackActive) return;
-  navScrollFallbackActive = true;
+  if (navScrollFallbackHandlers) {
+    window.removeEventListener('scroll', navScrollFallbackHandlers.scroll);
+    window.removeEventListener('resize', navScrollFallbackHandlers.resize);
+  }
+  navScrollFallbackHandlers = { scroll: syncActiveState, resize: syncActiveState };
   window.addEventListener('scroll', syncActiveState, { passive: true });
   window.addEventListener('resize', syncActiveState, { passive: true });
 }
