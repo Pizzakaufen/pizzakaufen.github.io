@@ -162,35 +162,44 @@ function initNavScrollFallback(sections = [...document.querySelectorAll('main se
     if (navScrollFallbackHandlers) {
       window.removeEventListener('scroll', navScrollFallbackHandlers.scroll);
       window.removeEventListener('resize', navScrollFallbackHandlers.resize);
+      navScrollFallbackHandlers.cancel();
       navScrollFallbackHandlers = null;
     }
     return;
   }
-  const syncActiveState = rafSync(() => syncActiveNav(sections));
+  const syncActiveState = createScheduledSync(() => syncActiveNav(sections));
   syncActiveNav(sections);
   if (navScrollFallbackHandlers) {
     window.removeEventListener('scroll', navScrollFallbackHandlers.scroll);
     window.removeEventListener('resize', navScrollFallbackHandlers.resize);
+    navScrollFallbackHandlers.cancel();
   }
-  navScrollFallbackHandlers = { scroll: syncActiveState, resize: syncActiveState };
-  window.addEventListener('scroll', syncActiveState, { passive: true });
-  window.addEventListener('resize', syncActiveState, { passive: true });
+  navScrollFallbackHandlers = { scroll: syncActiveState.run, resize: syncActiveState.run, cancel: syncActiveState.cancel };
+  window.addEventListener('scroll', syncActiveState.run, { passive: true });
+  window.addEventListener('resize', syncActiveState.run, { passive: true });
 }
 function createFrameScheduler() {
   return typeof requestAnimationFrame === 'function'
     ? { schedule: (handler) => requestAnimationFrame(handler), clear: (handle) => cancelAnimationFrame(handle) }
     : { schedule: (handler) => window.setTimeout(handler, 16), clear: (handle) => window.clearTimeout(handle) };
 }
-function rafSync(callback) {
+function createScheduledSync(callback) {
   let frame = null;
   const scheduler = createFrameScheduler();
   const flush = () => {
     frame = null;
     callback();
   };
-  return () => {
-    if (frame !== null) return;
-    frame = scheduler.schedule(flush);
+  return {
+    run() {
+      if (frame !== null) return;
+      frame = scheduler.schedule(flush);
+    },
+    cancel() {
+      if (frame === null) return;
+      scheduler.clear(frame);
+      frame = null;
+    }
   };
 }
 function initNavObserver() {
@@ -203,7 +212,7 @@ function initNavObserver() {
     initNavScrollFallback(sections);
     return;
   }
-  const syncActiveState = rafSync(() => syncActiveNav(sections));
+  const syncActiveState = createScheduledSync(() => syncActiveNav(sections));
   const sectionStates = new Map(sections.map((section) => [section.id, { isIntersecting: false, top: Number.POSITIVE_INFINITY, ratio: 0 }]));
   const sectionObserver = new IntersectionObserver((entries) => {
     try {
@@ -219,7 +228,7 @@ function initNavObserver() {
         .filter(([, state]) => state.isIntersecting)
         .sort((left, right) => Math.abs(left[1].top - threshold) - Math.abs(right[1].top - threshold) || right[1].ratio - left[1].ratio)[0];
       if (activeEntry) setActiveNav(activeEntry[0]);
-      else syncActiveState();
+      else syncActiveState.run();
     } catch (error) {
       console.warn('Navigationsstatus konnte nicht synchronisiert werden.', error);
     }
