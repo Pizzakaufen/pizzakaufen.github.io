@@ -156,11 +156,19 @@ function syncActiveNav(sections) {
   const activeSection = getActiveSection(sections);
   if (activeSection) setActiveNav(activeSection.id);
 }
+function initNavScrollFallback(sections = [...document.querySelectorAll('main section[id]')]) {
+  if (!sections.length) return;
+  const syncActiveState = rafSync(() => syncActiveNav(sections));
+  syncActiveNav(sections);
+  window.addEventListener('scroll', syncActiveState, { passive: true });
+  window.addEventListener('resize', syncActiveState, { passive: true });
+}
 function rafSync(callback) {
   let frame = 0;
+  const scheduleFrame = typeof requestAnimationFrame === 'function' ? requestAnimationFrame : (handler) => window.setTimeout(handler, 16);
   return () => {
     if (frame) return;
-    frame = requestAnimationFrame(() => {
+    frame = scheduleFrame(() => {
       frame = 0;
       callback();
     });
@@ -169,12 +177,11 @@ function rafSync(callback) {
 function initNavObserver() {
   const sections = [...document.querySelectorAll('main section[id]')];
   if (!sections.length) return;
-  const syncActiveState = rafSync(() => syncActiveNav(sections));
   if (typeof IntersectionObserver === 'undefined') {
-    syncActiveNav(sections);
-    window.addEventListener('scroll', syncActiveState, { passive: true });
+    initNavScrollFallback(sections);
     return;
   }
+  const syncActiveState = rafSync(() => syncActiveNav(sections));
   const sectionStates = new Map(sections.map((section) => [section.id, { isIntersecting: false, top: Number.POSITIVE_INFINITY, ratio: 0 }]));
   const sectionObserver = new IntersectionObserver((entries) => {
     try {
@@ -210,7 +217,7 @@ function init() {
   document.body.innerHTML = renderCurrentPage();
   runEnhancement('theme', initTheme);
   runEnhancement('navigation', initNavigation);
-  runEnhancement('nav-observer', initNavObserver);
+  runEnhancement('nav-observer', initNavObserver, initNavScrollFallback);
   runEnhancement('reveal-observer', initRevealObserver, revealAll);
 }
 init();
