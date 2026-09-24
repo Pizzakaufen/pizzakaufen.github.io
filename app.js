@@ -144,9 +144,23 @@ function initNavigation() {
 function syncActiveNav(sectionId, active) {
   document.querySelectorAll(`[data-nav="${sectionId}"]`).forEach((link) => link.classList.toggle('active', active));
 }
+function syncActiveNavFallback(sections) {
+  const threshold = window.innerHeight * .35;
+  let activeSection = sections[0];
+  sections.forEach((section) => {
+    if (section.getBoundingClientRect().top <= threshold) activeSection = section;
+  });
+  if (!activeSection) return;
+  document.querySelectorAll('[data-nav]').forEach((link) => link.classList.toggle('active', link.dataset.nav === activeSection.id));
+}
 function initNavObserver() {
   const sections = [...document.querySelectorAll('main section[id]')];
-  if (typeof IntersectionObserver === 'undefined') return;
+  if (!sections.length) return;
+  if (typeof IntersectionObserver === 'undefined') {
+    syncActiveNavFallback(sections);
+    window.addEventListener('scroll', () => syncActiveNavFallback(sections), { passive: true });
+    return;
+  }
   const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
     try {
       syncActiveNav(entry.target.id, entry.isIntersecting);
