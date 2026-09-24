@@ -158,7 +158,14 @@ function syncActiveNav(sections) {
 }
 let navScrollFallbackHandlers = null;
 function initNavScrollFallback(sections = [...document.querySelectorAll('main section[id]')]) {
-  if (!sections.length) return;
+  if (!sections.length) {
+    if (navScrollFallbackHandlers) {
+      window.removeEventListener('scroll', navScrollFallbackHandlers.scroll);
+      window.removeEventListener('resize', navScrollFallbackHandlers.resize);
+      navScrollFallbackHandlers = null;
+    }
+    return;
+  }
   const syncActiveState = rafSync(() => syncActiveNav(sections));
   syncActiveNav(sections);
   if (navScrollFallbackHandlers) {
