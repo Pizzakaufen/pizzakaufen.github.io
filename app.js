@@ -183,6 +183,7 @@ function initNavObserver() {
     }
   }), { rootMargin: '-35% 0px -55% 0px' });
   sections.forEach((section) => sectionObserver.observe(section));
+  window.addEventListener('scroll', syncActiveState, { passive: true });
   syncActiveNav(sections);
 }
 function initRevealObserver() {
