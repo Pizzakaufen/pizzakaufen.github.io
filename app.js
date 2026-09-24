@@ -156,10 +156,13 @@ function syncActiveNav(sections) {
   const activeSection = getActiveSection(sections);
   if (activeSection) setActiveNav(activeSection.id);
 }
+let navScrollFallbackActive = false;
 function initNavScrollFallback(sections = [...document.querySelectorAll('main section[id]')]) {
   if (!sections.length) return;
   const syncActiveState = rafSync(() => syncActiveNav(sections));
   syncActiveNav(sections);
+  if (navScrollFallbackActive) return;
+  navScrollFallbackActive = true;
   window.addEventListener('scroll', syncActiveState, { passive: true });
   window.addEventListener('resize', syncActiveState, { passive: true });
 }
