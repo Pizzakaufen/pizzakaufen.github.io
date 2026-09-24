@@ -99,25 +99,118 @@ function applyTheme(preference) {
 function revealTargets() {
   return document.querySelectorAll('.section, .hero-copy, .hero-profile, .project-card, .card, .skill-card, .contact-card');
 }
-function init() {
-  const path = window.location.pathname;
-  document.body.innerHTML = path.endsWith('/404.html') ? notFoundPage() : path.includes('/impressum') ? legalPage('imprint') : path.includes('/datenschutz') ? legalPage('privacy') : homePage();
-  let theme = getThemePreference(); applyTheme(theme);
-  document.querySelector('#theme-toggle')?.addEventListener('click', () => { theme = theme === 'system' ? 'light' : theme === 'light' ? 'dark' : 'system'; safeSet('theme-preference', theme); applyTheme(theme); });
-  const nav = document.querySelector('.site-nav'); const menu = document.querySelector('.nav-links');
-  document.querySelector('#menu-toggle')?.addEventListener('click', (event) => { const button = event.currentTarget; const open = menu.classList.toggle('open'); button.setAttribute('aria-expanded', String(open)); button.setAttribute('aria-label', open ? 'Navigation schließen' : 'Navigation öffnen'); nav.classList.toggle('open', open); });
-  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { menu.classList.remove('open'); nav.classList.remove('open'); document.querySelector('#menu-toggle')?.setAttribute('aria-expanded', 'false'); }));
+function revealAll() {
+  revealTargets().forEach((item) => item.classList.add('visible'));
+}
+function runEnhancement(name, setup, fallback) {
+  try {
+    setup();
+  } catch (error) {
+    console.warn(`UI-Enhancement fehlgeschlagen: ${name}`, error);
+    fallback?.();
+  }
+}
+function renderCurrentPage(path = window.location.pathname) {
+  return path.endsWith('/404.html') ? notFoundPage() : path.includes('/impressum') ? legalPage('imprint') : path.includes('/datenschutz') ? legalPage('privacy') : homePage();
+}
+function initTheme() {
+  let theme = getThemePreference();
+  applyTheme(theme);
+  document.querySelector('#theme-toggle')?.addEventListener('click', () => {
+    theme = theme === 'system' ? 'light' : theme === 'light' ? 'dark' : 'system';
+    safeSet('theme-preference', theme);
+    applyTheme(theme);
+  });
+}
+function initNavigation() {
+  const nav = document.querySelector('.site-nav');
+  const menu = document.querySelector('.nav-links');
+  document.querySelector('#menu-toggle')?.addEventListener('click', (event) => {
+    const button = event.currentTarget;
+    const open = menu?.classList.toggle('open') || false;
+    button?.setAttribute('aria-expanded', String(open));
+    button?.setAttribute('aria-label', open ? 'Navigation schließen' : 'Navigation öffnen');
+    nav?.classList.toggle('open', open);
+  });
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    menu.classList.remove('open');
+    nav?.classList.remove('open');
+    document.querySelector('#menu-toggle')?.setAttribute('aria-expanded', 'false');
+  }));
   const syncScrolledState = () => nav?.classList.toggle('scrolled', window.scrollY > 16);
   syncScrolledState();
   window.addEventListener('scroll', syncScrolledState, { passive: true });
+}
+function setActiveNav(sectionId) {
+  document.querySelectorAll('[data-nav]').forEach((link) => link.classList.toggle('active', link.dataset.nav === sectionId));
+}
+function getActiveSection(sections) {
+  const threshold = window.innerHeight * .35;
+  let activeSection = sections[0];
+  sections.forEach((section) => {
+    if (section.getBoundingClientRect().top <= threshold) activeSection = section;
+  });
+  return activeSection;
+}
+function syncActiveNav(sections) {
+  const activeSection = getActiveSection(sections);
+  if (activeSection) setActiveNav(activeSection.id);
+}
+function rafSync(callback) {
+  let frame = 0;
+  return () => {
+    if (frame) return;
+    frame = requestAnimationFrame(() => {
+      frame = 0;
+      callback();
+    });
+  };
+}
+function initNavObserver() {
   const sections = [...document.querySelectorAll('main section[id]')];
+  if (!sections.length) return;
+  const syncActiveState = rafSync(() => syncActiveNav(sections));
   if (typeof IntersectionObserver === 'undefined') {
-    revealTargets().forEach((item) => item.classList.add('visible'));
-  } else {
-    const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => document.querySelectorAll(`[data-nav="${entry.target.id}"]`).forEach((link) => link.classList.toggle('active', entry.isIntersecting))), { rootMargin: '-35% 0px -55% 0px' });
-    sections.forEach((section) => sectionObserver.observe(section));
-    const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }), { threshold: .08 });
-    revealTargets().forEach((item) => revealObserver.observe(item));
+    syncActiveNav(sections);
+    window.addEventListener('scroll', syncActiveState, { passive: true });
+    return;
   }
+  const sectionStates = new Map(sections.map((section) => [section.id, { isIntersecting: false, top: Number.POSITIVE_INFINITY, ratio: 0 }]));
+  const sectionObserver = new IntersectionObserver((entries) => {
+    try {
+      entries.forEach((entry) => {
+        sectionStates.set(entry.target.id, {
+          isIntersecting: entry.isIntersecting,
+          top: entry.boundingClientRect.top,
+          ratio: entry.intersectionRatio
+        });
+      });
+      const threshold = window.innerHeight * .35;
+      const activeEntry = [...sectionStates.entries()]
+        .filter(([, state]) => state.isIntersecting)
+        .sort((left, right) => Math.abs(left[1].top - threshold) - Math.abs(right[1].top - threshold) || right[1].ratio - left[1].ratio)[0];
+      if (activeEntry) setActiveNav(activeEntry[0]);
+      else syncActiveState();
+    } catch (error) {
+      console.warn('Navigationsstatus konnte nicht synchronisiert werden.', error);
+    }
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: [0, .2, .6, 1] });
+  sections.forEach((section) => sectionObserver.observe(section));
+  syncActiveNav(sections);
+}
+function initRevealObserver() {
+  if (typeof IntersectionObserver === 'undefined') {
+    revealAll();
+    return;
+  }
+  const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }), { threshold: .08 });
+  revealTargets().forEach((item) => revealObserver.observe(item));
+}
+function init() {
+  document.body.innerHTML = renderCurrentPage();
+  runEnhancement('theme', initTheme);
+  runEnhancement('navigation', initNavigation);
+  runEnhancement('nav-observer', initNavObserver);
+  runEnhancement('reveal-observer', initRevealObserver, revealAll);
 }
 init();
