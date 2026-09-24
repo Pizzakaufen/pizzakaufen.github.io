@@ -141,14 +141,26 @@ function initNavigation() {
   syncScrolledState();
   window.addEventListener('scroll', syncScrolledState, { passive: true });
 }
-function initObservers() {
+function syncActiveNav(sectionId, active) {
+  document.querySelectorAll(`[data-nav="${sectionId}"]`).forEach((link) => link.classList.toggle('active', active));
+}
+function initNavObserver() {
   const sections = [...document.querySelectorAll('main section[id]')];
+  if (typeof IntersectionObserver === 'undefined') return;
+  const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    try {
+      syncActiveNav(entry.target.id, entry.isIntersecting);
+    } catch (error) {
+      console.warn('Navigationsstatus konnte nicht synchronisiert werden.', error);
+    }
+  }), { rootMargin: '-35% 0px -55% 0px' });
+  sections.forEach((section) => sectionObserver.observe(section));
+}
+function initRevealObserver() {
   if (typeof IntersectionObserver === 'undefined') {
     revealAll();
     return;
   }
-  const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => document.querySelectorAll(`[data-nav="${entry.target.id}"]`).forEach((link) => link.classList.toggle('active', entry.isIntersecting))), { rootMargin: '-35% 0px -55% 0px' });
-  sections.forEach((section) => sectionObserver.observe(section));
   const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }), { threshold: .08 });
   revealTargets().forEach((item) => revealObserver.observe(item));
 }
@@ -156,6 +168,7 @@ function init() {
   document.body.innerHTML = renderCurrentPage();
   runEnhancement('theme', initTheme);
   runEnhancement('navigation', initNavigation);
-  runEnhancement('observers', initObservers, revealAll);
+  runEnhancement('nav-observer', initNavObserver);
+  runEnhancement('reveal-observer', initRevealObserver, revealAll);
 }
 init();
