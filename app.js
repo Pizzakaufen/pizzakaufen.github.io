@@ -175,15 +175,25 @@ function initNavObserver() {
     window.addEventListener('scroll', syncActiveState, { passive: true });
     return;
   }
+  const sectionStates = new Map(sections.map((section) => [section.id, { isIntersecting: false, top: Number.POSITIVE_INFINITY, ratio: 0 }]));
   const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
     try {
-      if (entry.isIntersecting) syncActiveState();
+      sectionStates.set(entry.target.id, {
+        isIntersecting: entry.isIntersecting,
+        top: entry.boundingClientRect.top,
+        ratio: entry.intersectionRatio
+      });
+      const threshold = window.innerHeight * .35;
+      const activeEntry = [...sectionStates.entries()]
+        .filter(([, state]) => state.isIntersecting)
+        .sort((left, right) => Math.abs(left[1].top - threshold) - Math.abs(right[1].top - threshold) || right[1].ratio - left[1].ratio)[0];
+      if (activeEntry) setActiveNav(activeEntry[0]);
+      else syncActiveState();
     } catch (error) {
       console.warn('Navigationsstatus konnte nicht synchronisiert werden.', error);
     }
-  }), { rootMargin: '-35% 0px -55% 0px' });
+  }), { rootMargin: '-35% 0px -55% 0px', threshold: [0, .2, .6, 1] });
   sections.forEach((section) => sectionObserver.observe(section));
-  window.addEventListener('scroll', syncActiveState, { passive: true });
   syncActiveNav(sections);
 }
 function initRevealObserver() {
