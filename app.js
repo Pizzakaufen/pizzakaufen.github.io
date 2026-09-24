@@ -176,12 +176,14 @@ function initNavObserver() {
     return;
   }
   const sectionStates = new Map(sections.map((section) => [section.id, { isIntersecting: false, top: Number.POSITIVE_INFINITY, ratio: 0 }]));
-  const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+  const sectionObserver = new IntersectionObserver((entries) => {
     try {
-      sectionStates.set(entry.target.id, {
-        isIntersecting: entry.isIntersecting,
-        top: entry.boundingClientRect.top,
-        ratio: entry.intersectionRatio
+      entries.forEach((entry) => {
+        sectionStates.set(entry.target.id, {
+          isIntersecting: entry.isIntersecting,
+          top: entry.boundingClientRect.top,
+          ratio: entry.intersectionRatio
+        });
       });
       const threshold = window.innerHeight * .35;
       const activeEntry = [...sectionStates.entries()]
@@ -192,7 +194,7 @@ function initNavObserver() {
     } catch (error) {
       console.warn('Navigationsstatus konnte nicht synchronisiert werden.', error);
     }
-  }), { rootMargin: '-35% 0px -55% 0px', threshold: [0, .2, .6, 1] });
+  }, { rootMargin: '-35% 0px -55% 0px', threshold: [0, .2, .6, 1] });
   sections.forEach((section) => sectionObserver.observe(section));
   syncActiveNav(sections);
 }
