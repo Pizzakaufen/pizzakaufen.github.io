@@ -2,20 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://pizzakaufen.github.io/</loc>
-    <lastmod>2026-08-30</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-10-27</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://pizzakaufen.github.io/impressum/</loc>
-    <lastmod>2026-08-30</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://pizzakaufen.github.io/datenschutz/</loc>
-    <lastmod>2026-08-30</lastmod>
-    <changefreq>yearly</changefreq>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.3</priority>
   </url>
 </urlset>

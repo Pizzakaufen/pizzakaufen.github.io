@@ -1,254 +1,176 @@
-const site = {
-  name: 'Hagen Böttcher', handle: 'Pizzakaufen', role: 'Developer & Creator',
-  location: 'Dresden, Deutschland', birthDate: '12.09.2006', age: 19,
-  description: 'Ich entwickle eigene Software, Systeme und technische Projekte.',
-  about: 'Ich bin Hagen und beschäftige mich hauptsächlich mit Softwareentwicklung, Webentwicklung, FiveM und moderner Computertechnik. Ich probiere gerne neue Technologien aus und arbeite an eigenen Projekten.',
-  statement: 'Mein Schwerpunkt liegt auf praktischen Lösungen: eigene Anwendungen, Scripts und technische Systeme, die ich von der Idee bis zur Weiterentwicklung selbst begleite.',
-  experience: 'Ich entwickle seit mehreren Jahren; C# und Lua gehören zu den Technologien, mit denen ich am längsten arbeite.',
-  goals: 'Eigene Software- und Webprojekte weiterentwickeln, neue technische Fähigkeiten aufbauen und professionelle eigene Projekte umsetzen.'
-};
-
-const socialLinks = [
-  { label: 'GitHub', value: 'github.com/Pizzakaufen', href: 'https://github.com/Pizzakaufen', external: true },
-  { label: 'TikTok', value: '@PizzakaufenPro', href: 'https://www.tiktok.com/@PizzakaufenPro', external: true },
-  { label: 'E-Mail', value: 'hagen@con-meo.de', href: 'mailto:hagen@con-meo.de' },
-  { label: 'Discord', value: 'Pizzakaufen', note: 'Benutzername' }
-];
-
-const profileFacts = [['Name', site.name], ['Profilname', site.handle], ['Alter', `${site.age} Jahre`], ['Ort', site.location], ['Sprachen', 'Deutsch · Englisch'], ['Fokus', 'C# · Lua · FiveM · Android']];
-const focusAreas = [
-  ['Softwareentwicklung', 'Eigene Anwendungen und Tools in C# und .NET, dazu die Optimierung bestehender Software.'],
-  ['FiveM Development', 'Eigene Ressourcen, Scripts und Systeme in Lua für Roleplay-Server auf Basis von ND_Core.'],
-  ['Android & Web', 'Die Dienstplan-App eDienstplanReload mit Jetpack Compose sowie Webprojekte.'],
-  ['Technik & Systeme', 'PC-Hardware, Linux, Raspberry Pi, Serververwaltung und Systemoptimierung.']
-];
-const skillGroups = [
-  ['Programming', ['C#', 'Lua', 'JavaScript', 'TypeScript', 'HTML', 'CSS']],
-  ['Frameworks', ['.NET', 'React', 'Vite', 'Jetpack Compose', 'Material 3', 'ND_Core']],
-  ['Platforms', ['Windows', 'Linux', 'Android', 'FiveM', 'FXServer', 'Raspberry Pi', 'macOS']],
-  ['Tools', ['Git', 'GitHub', 'Visual Studio', 'txAdmin', 'Pterodactyl', 'OpenCore', 'Linux-Terminal']],
-  ['Languages', ['Deutsch', 'Englisch']]
-];
-const timeline = [
-  ['Schule', 'Förderschulabschluss', 'Dinglingerschule Dresden', 'Schulischer Abschluss in Dresden.'],
-  ['BVB', 'Berufsvorbereitungsjahr', '', 'Berufsvorbereitung im Anschluss an die Schule.'],
-  ['Ausbildung', 'BBW Leipzig', '', 'Weiterführende Ausbildung im Berufsbildungswerk Leipzig.'],
-  ['Erfahrung', 'Praktische Erfahrungen', 'Lloyd’s Café & Bar', 'Praktische Erfahrung unter anderem im Küchenbereich.'],
-  ['Heute', 'Eigene Softwareentwicklung', '', 'Eigene Anwendungen, Scripts, Systeme und technische Projekte.']
-];
-const projects = [
-  { id: 'edienstplanreload', name: 'eDienstplanReload', eyebrow: 'Android · App Development', status: 'In Weiterentwicklung', featured: true, description: 'Persönliche Weiterentwicklung einer Dienstplan-App für die Verwaltung und Darstellung von Arbeitszeiten und Dienstplänen mit einem modernen, an One UI orientierten Android-Design.', goal: 'Dienstpläne und Arbeitszeiten übersichtlich, modern und auch offline nutzbar darstellen.', details: ['Oberfläche orientiert an One UI 8.5 und Android 16', 'Dark Mode, Light Mode und eigene Themes', 'Lokale Speicherung, offline nutzbar', 'Server- und API-Komponenten aus früheren Versionen', 'Weiterentwicklung der Dienstplan- und Benutzerfunktionen'], tech: ['Android', 'Jetpack Compose', 'Material 3', 'Offline-Speicherung', 'API'] },
-  { id: 'fivem-development', name: 'FiveM Development', eyebrow: 'FiveM · Lua · Server Systems', status: 'Laufende Entwicklung', featured: true, description: 'Entwicklung eigener FiveM-Ressourcen, Scripts und Systeme für Roleplay-Server. Schwerpunkt auf Lua, Server- und Client-Systemen, UI und Framework-Integration.', goal: 'Eigene technische Systeme für Roleplay-Server entwickeln und in der Praxis weiter verbessern.', details: ['Scripts und eigene Ressourcen', 'HUDs und NUI-Oberflächen', 'Gameplay-Systeme, unter anderem ein Taser-System', 'Serverfunktionen und Server-Client-Logik', 'Framework-Integration mit ND_Core, kein ESX oder QBCore'], tech: ['Lua', 'C#', 'FiveM', 'FXServer', 'ND_Core', 'NUI', 'HTML', 'CSS', 'JavaScript'] },
-  { id: 'website', name: 'Diese Website', eyebrow: 'Webentwicklung · Portfolio', status: 'Aktiv', description: 'Meine persönliche Website: statisch gebaut, ohne Tracking, mit Dark-, Light- und System-Theme sowie einer zentralen Struktur für Inhalte und Metadaten.', goal: 'Eine schnelle, persönliche und wartbare Präsentation meiner Arbeit schaffen.', details: ['Semantisches HTML und responsive CSS', 'Vanilla JavaScript ohne Runtime-Abhängigkeiten', 'Eigene Seiten für Impressum, Datenschutz und 404'], tech: ['HTML', 'CSS', 'JavaScript'] },
-  { id: 'weitere-arbeiten', name: 'Weitere Arbeiten', eyebrow: 'Systeme · Experimente · Projekte', status: 'Laufende Entwicklung', description: 'Kleinere Arbeiten aus denselben Bereichen: frühere FiveM-Ressourcen, Android-Projekte, Webprojekte, Serverprojekte und Systemoptimierungen.', goal: 'Technische Ideen ausprobieren, Erfahrungen sammeln und bestehende Systeme verbessern.', details: ['Serververwaltung mit txAdmin und Pterodactyl', 'Linux- und Raspberry-Pi-Setups', 'macOS-Installationen mit OpenCore'], tech: ['C#', '.NET', 'Lua', 'Linux', 'Raspberry Pi'] }
-];
-const interests = ['FiveM & Roleplay', 'eigene technische Projekte', 'Computer & Hardware', 'Android & Samsung', 'Linux', 'Webseiten', 'Systemoptimierung'];
-const esc = (value) => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
-const badges = (items) => items.map((item) => `<span class="badge">${esc(item)}</span>`).join('');
-const externalAttrs = (item) => item.external ? ' target="_blank" rel="noopener noreferrer"' : '';
-function safeGet(key) {
-  try {
-    return localStorage.getItem(key);
-  } catch {
-    return null;
-  }
-}
-function safeSet(key, value) {
-  try {
-    localStorage.setItem(key, value);
-  } catch {}
-}
-
-function header() {
-  const links = [['home', 'Home'], ['about', 'Über mich'], ['skills', 'Skills'], ['projects', 'Projekte'], ['contact', 'Kontakt']];
-  return `<header class="site-nav"><a class="skip" href="#main">Zum Inhalt springen</a><div class="container nav-inner"><a class="brand" href="#home" aria-label="Hagen Böttcher, Startseite"><span class="logo" aria-hidden="true">H</span><span>${site.name}</span></a><nav aria-label="Hauptnavigation"><ul class="nav-links">${links.map(([id, label]) => `<li><a href="#${id}" data-nav="${id}">${label}</a></li>`).join('')}</ul></nav><div class="nav-actions"><button class="icon-button" id="theme-toggle" type="button" aria-label="Farbschema: System" title="Farbschema wechseln">◐</button><button class="menu-button" id="menu-toggle" type="button" aria-label="Navigation öffnen" aria-expanded="false">☰</button></div></div></header>`;
-}
-
-function footer() {
-  return `<footer class="site-footer"><div class="container footer-grid"><div><a class="brand" href="#home"><span class="logo" aria-hidden="true">H</span><span>${site.name}</span></a><p>Developer & Creator aus Dresden.</p><p>© 2026 ${site.name}. Alle Rechte vorbehalten.</p></div><nav aria-label="Footer-Navigation"><span class="mono">Navigation</span><ul><li><a href="#about">Über mich</a></li><li><a href="#projects">Projekte</a></li><li><a href="#contact">Kontakt</a></li></ul></nav><nav aria-label="Profile und Rechtliches"><span class="mono">Profile & Rechtliches</span><ul><li><a href="${socialLinks[0].href}" target="_blank" rel="noopener">GitHub</a></li><li><a href="${socialLinks[1].href}" target="_blank" rel="noopener">TikTok</a></li><li><a href="${socialLinks[2].href}">E-Mail</a></li><li><a href="impressum/">Impressum</a></li><li><a href="datenschutz/">Datenschutz</a></li></ul></nav></div></footer>`;
-}
-function heading(number, title, text) { return `<div class="section-heading"><span class="mono">${number}</span><h2>${title}</h2><p>${text}</p></div>`; }
-function profileCard() { return `<div class="profile-card"><div class="avatar-large" aria-hidden="true">H</div><div><span class="mono">Developer Profile</span><h2>${site.name}</h2><p class="muted">${site.role} · ${site.location}</p></div><dl class="profile-facts">${profileFacts.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl></div>`; }
-function projectCard(project) { return `<article class="project-card ${project.featured ? 'featured' : ''}" id="project-${project.id}"><div class="project-top"><div><span class="mono">${esc(project.eyebrow)}</span><h3>${esc(project.name)}</h3></div><span class="status">${esc(project.status)}</span></div><p>${esc(project.description)}</p><div class="project-detail"><span class="mono">Ziel</span><p>${esc(project.goal)}</p><ul>${project.details.map((detail) => `<li>${esc(detail)}</li>`).join('')}</ul></div><div class="badges">${badges(project.tech)}</div></article>`; }
-
-function homePage() {
-  return `${header()}<main id="main"><section id="home" class="hero"><div class="hero-grid container"><div class="hero-copy"><span class="eyebrow">${site.location} · ${site.handle}</span><h1>${site.name}</h1><p class="hero-role">${site.role}</p><p class="lead">${site.description} ${site.statement}</p><div class="actions"><a class="button primary" href="#projects">Meine Projekte <span aria-hidden="true">→</span></a><a class="button" href="#about">Über mich</a></div><div class="hero-socials" aria-label="Öffentliche Profile">${socialLinks.filter((item) => item.href).map((item) => `<a href="${item.href}"${externalAttrs(item)}>${item.label}</a>`).join('')}</div></div><div class="hero-profile"><div class="avatar-hero" aria-label="H-Monogramm für Hagen Böttcher">H</div><div class="hero-profile-card"><div class="profile-status"><span class="status-dot"></span><span class="mono">eigene Projekte</span></div><dl>${profileFacts.slice(0, 4).map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl></div></div></div></section>
-<section id="about" class="section"><div class="container">${heading('01 — Profil', 'Über mich', site.about)}<div class="about-grid"><div class="about-copy"><p>${site.statement}</p><p>${site.experience}</p><p>Mich interessieren technische Themen besonders dann, wenn daraus etwas Eigenes entsteht: eine Anwendung, ein System, ein Script oder eine Website, die im Alltag funktioniert.</p></div>${profileCard()}</div><div class="focus-grid">${focusAreas.map(([title, text]) => `<article class="card"><h3>${esc(title)}</h3><p>${esc(text)}</p></article>`).join('')}</div><div class="about-lower"><div><span class="mono">Entwicklung und Ausbildung</span><ol class="timeline">${timeline.map(([kind, title, place, text]) => `<li><span class="timeline-kind">${esc(kind)}</span><h3>${esc(title)}${place ? ` <span>· ${esc(place)}</span>` : ''}</h3><p>${esc(text)}</p></li>`).join('')}</ol></div><div class="interest-stack"><article class="card"><span class="mono">Persönliche Interessen</span><div class="badges">${badges(interests)}</div></article><article class="card"><span class="mono">Ziele</span><p>${site.goals}</p></article></div></div></div></section>
-<section id="skills" class="section section-alt"><div class="container">${heading('02 — Stack', 'Skills', 'Technologien, mit denen ich regelmäßig arbeite — sortiert nach ihrem Einsatzbereich.')}<div class="skill-grid">${skillGroups.map(([group, items]) => `<article class="skill-card"><span class="mono">${esc(group)}</span><div class="badges">${badges(items)}</div></article>`).join('')}</div></div></section>
-<section id="projects" class="section"><div class="container">${heading('03 — Arbeit', 'Meine Projekte', 'Eine Auswahl an Dingen, die ich gebaut habe oder gerade baue.')}<div class="projects-grid">${projects.map(projectCard).join('')}</div><p class="project-note">Projekt-Repositorys, Demos und Screenshots sind derzeit nicht öffentlich im Projekt hinterlegt.</p></div></section>
-<section id="github" class="section section-compact"><div class="container"><div class="github-band"><div><span class="mono">04 — Open Source</span><h2>Mehr von meiner Arbeit</h2><p>Auf GitHub veröffentliche ich Projekte, Scripts und andere Entwicklungen.</p></div><a class="button primary" href="${socialLinks[0].href}" target="_blank" rel="noopener">GitHub öffnen <span aria-hidden="true">↗</span></a></div></div></section>
-<section id="contact" class="section"><div class="container">${heading('05 — Kontakt', 'Kontakt', 'Du möchtest mich kontaktieren oder mehr über meine Projekte erfahren?')}<div class="contact-grid">${socialLinks.map((item) => { const content = `<span class="contact-symbol" aria-hidden="true">${item.label.slice(0, 1)}</span><span><strong>${esc(item.label)}</strong><small>${esc(item.value)}${item.note ? ` · ${esc(item.note)}` : ''}</small></span>`; return item.href ? `<a class="contact-card" href="${item.href}"${externalAttrs(item)}>${content}</a>` : `<div class="contact-card">${content}</div>`; }).join('')}</div></div></section></main>${footer()}`;
-}
-
-function legalPage(kind) {
-  const imprint = kind === 'imprint';
-  const title = imprint ? 'Impressum' : 'Datenschutzerklärung';
-  const intro = imprint ? 'Anbieterkennzeichnung dieser Website nach § 5 DDG.' : 'Diese Website ist eine statische Seite ohne Nutzerkonten, Formulare und ohne Analyse-Tracking.';
-  const body = imprint ? '<div class="note">Noch zu ergänzen: Straße, Hausnummer und Postleitzahl. Diese Angaben liegen nicht vor und dürfen nicht geraten werden.</div><section><h2>Angaben gemäß § 5 DDG</h2><address>Hagen Böttcher<br>[STRASSE UND HAUSNUMMER EINTRAGEN]<br>[PLZ EINTRAGEN] Dresden<br>Deutschland</address></section><section><h2>Kontakt</h2><p>E-Mail: <a href="mailto:hagen@con-meo.de">hagen@con-meo.de</a></p></section><section><h2>Haftung für Inhalte und Links</h2><p>Die Inhalte dieser Seiten wurden mit Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann keine Gewähr übernommen werden. Für Inhalte externer Links sind ausschließlich deren Betreiber verantwortlich.</p></section>' : '<section><h2>Verantwortlicher</h2><p>Hagen Böttcher, [ADRESSE EINTRAGEN], Dresden<br>E-Mail: <a href="mailto:hagen@con-meo.de">hagen@con-meo.de</a></p></section><section><h2>Hosting und Server-Logfiles</h2><p>Diese Website wird bei [HOSTER EINTRAGEN] gehostet. Beim Aufruf werden technisch notwendige Daten verarbeitet: IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, Browser und Betriebssystem.</p></section><section><h2>Cookies und Tracking</h2><p>Es werden keine Analyse- oder Tracking-Cookies gesetzt. Die Einstellungen für das Farbschema werden ausschließlich lokal im Browser gespeichert.</p></section><section><h2>Externe Schriftarten</h2><p>Die Schriftarten dieser Website werden von den Servern der jeweiligen Anbieter geladen. Dabei wird die IP-Adresse an den Anbieter übertragen.</p></section><section><h2>Deine Rechte</h2><p>Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch.</p></section>';
-  return `<header class="site-nav scrolled"><div class="container nav-inner"><a class="brand" href="../"><span class="logo" aria-hidden="true">H</span><span>${site.name}</span></a><a class="button" href="../">Zur Startseite</a></div></header><main id="main"><article class="legal"><div class="container legal-copy"><p class="mono"><a href="../">Startseite</a> / ${title}</p><h1>${title}</h1><p class="lead">${intro}</p><div class="legal-body">${body}</div></div></article></main>${footer()}`;
-}
-function notFoundPage() { return `${header()}<main id="main"><article class="legal not-found"><div class="container legal-copy"><span class="eyebrow">404 — Nicht gefunden</span><h1>Diese Seite wurde nicht gefunden.</h1><p class="lead">Vielleicht bist du hier falsch abgebogen.</p><div class="actions"><a class="button primary" href="./">Zur Startseite <span aria-hidden="true">→</span></a><a class="button" href="./#projects">Projekte ansehen</a></div></div></article></main>${footer()}`; }
-
-function getThemePreference() { return safeGet('theme-preference') || 'system'; }
-function applyTheme(preference) {
-  document.documentElement.dataset.theme = preference;
-  const button = document.querySelector('#theme-toggle');
-  const label = preference === 'system' ? 'System' : preference === 'light' ? 'Hell' : 'Dunkel';
-  button?.setAttribute('aria-label', `Farbschema: ${label}`); button?.setAttribute('title', `Farbschema: ${label}`);
-}
-function revealTargets() {
-  return document.querySelectorAll('.section, .hero-copy, .hero-profile, .project-card, .card, .skill-card, .contact-card');
-}
-function revealAll() {
-  revealTargets().forEach((item) => item.classList.add('visible'));
-}
-function runEnhancement(name, setup, fallback) {
-  try {
-    setup();
-  } catch (error) {
-    console.warn(`UI-Enhancement fehlgeschlagen: ${name}`, error);
-    fallback?.();
-  }
-}
-function renderCurrentPage(path = window.location.pathname) {
-  return path.endsWith('/404.html') ? notFoundPage() : path.includes('/impressum') ? legalPage('imprint') : path.includes('/datenschutz') ? legalPage('privacy') : homePage();
-}
-function initTheme() {
-  let theme = getThemePreference();
-  applyTheme(theme);
-  document.querySelector('#theme-toggle')?.addEventListener('click', () => {
-    theme = theme === 'system' ? 'light' : theme === 'light' ? 'dark' : 'system';
-    safeSet('theme-preference', theme);
-    applyTheme(theme);
-  });
-}
-function initNavigation() {
-  const nav = document.querySelector('.site-nav');
-  const menu = document.querySelector('.nav-links');
-  document.querySelector('#menu-toggle')?.addEventListener('click', (event) => {
-    const button = event.currentTarget;
-    const open = menu?.classList.toggle('open') || false;
-    button?.setAttribute('aria-expanded', String(open));
-    button?.setAttribute('aria-label', open ? 'Navigation schließen' : 'Navigation öffnen');
-    nav?.classList.toggle('open', open);
-  });
-  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-    menu.classList.remove('open');
-    nav?.classList.remove('open');
-    document.querySelector('#menu-toggle')?.setAttribute('aria-expanded', 'false');
-  }));
-  const syncScrolledState = () => nav?.classList.toggle('scrolled', window.scrollY > 16);
-  syncScrolledState();
-  window.addEventListener('scroll', syncScrolledState, { passive: true });
-}
-function setActiveNav(sectionId) {
-  document.querySelectorAll('[data-nav]').forEach((link) => link.classList.toggle('active', link.dataset.nav === sectionId));
-}
-function getActiveSection(sections) {
-  const threshold = window.innerHeight * .35;
-  let activeSection = sections[0];
-  sections.forEach((section) => {
-    if (section.getBoundingClientRect().top <= threshold) activeSection = section;
-  });
-  return activeSection;
-}
-function syncActiveNav(sections) {
-  const activeSection = getActiveSection(sections);
-  if (activeSection) setActiveNav(activeSection.id);
-}
-let navScrollFallbackHandlers = null;
-function initNavScrollFallback(sections = [...document.querySelectorAll('main section[id]')]) {
-  if (!sections.length) {
-    if (navScrollFallbackHandlers) {
-      window.removeEventListener('scroll', navScrollFallbackHandlers.scroll);
-      window.removeEventListener('resize', navScrollFallbackHandlers.resize);
-      navScrollFallbackHandlers.cancel();
-      navScrollFallbackHandlers = null;
-    }
-    return;
-  }
-  const syncActiveState = createScheduledSync(() => syncActiveNav(sections));
-  syncActiveNav(sections);
-  if (navScrollFallbackHandlers) {
-    window.removeEventListener('scroll', navScrollFallbackHandlers.scroll);
-    window.removeEventListener('resize', navScrollFallbackHandlers.resize);
-    navScrollFallbackHandlers.cancel();
-  }
-  navScrollFallbackHandlers = { scroll: syncActiveState.run, resize: syncActiveState.run, cancel: syncActiveState.cancel };
-  window.addEventListener('scroll', syncActiveState.run, { passive: true });
-  window.addEventListener('resize', syncActiveState.run, { passive: true });
-}
-function createFrameScheduler() {
-  return typeof requestAnimationFrame === 'function'
-    ? { schedule: (handler) => requestAnimationFrame(handler), clear: (handle) => cancelAnimationFrame(handle) }
-    : { schedule: (handler) => window.setTimeout(handler, 16), clear: (handle) => window.clearTimeout(handle) };
-}
-function createScheduledSync(callback) {
-  let frame = null;
-  const scheduler = createFrameScheduler();
-  const flush = () => {
-    frame = null;
-    callback();
+/* Kleine Verbesserungen für die fertig gebaute Seite.
+   Alle Inhalte stehen bereits im HTML — die Seite funktioniert auch ohne JavaScript. */
+(() => {
+  const root = document.documentElement;
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+  const safe = (name, fn) => { try { fn(); } catch (err) { console.warn(`[site] ${name}:`, err); } };
+  const store = {
+    get: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
+    set: (k, v) => { try { localStorage.setItem(k, v); } catch { /* privat-Modus */ } },
   };
-  return {
-    run() {
-      if (frame !== null) return;
-      frame = scheduler.schedule(flush);
-    },
-    cancel() {
-      if (frame === null) return;
-      scheduler.clear(frame);
-      frame = null;
-    }
-  };
-}
-function initNavObserver() {
-  const sections = [...document.querySelectorAll('main section[id]')];
-  if (!sections.length) {
-    initNavScrollFallback(sections);
-    return;
-  }
-  if (typeof IntersectionObserver === 'undefined') {
-    initNavScrollFallback(sections);
-    return;
-  }
-  const syncActiveState = createScheduledSync(() => syncActiveNav(sections));
-  const sectionStates = new Map(sections.map((section) => [section.id, { isIntersecting: false, top: Number.POSITIVE_INFINITY, ratio: 0 }]));
-  const sectionObserver = new IntersectionObserver((entries) => {
-    try {
-      entries.forEach((entry) => {
-        sectionStates.set(entry.target.id, {
-          isIntersecting: entry.isIntersecting,
-          top: entry.boundingClientRect.top,
-          ratio: entry.intersectionRatio
-        });
+
+  /* ---------- Farbschema: System → Hell → Dunkel ---------- */
+  safe('theme', () => {
+    const button = $('#theme-toggle');
+    const labels = { system: 'System', light: 'Hell', dark: 'Dunkel' };
+    const apply = (t) => {
+      root.dataset.theme = t;
+      const text = `Farbschema: ${labels[t]} (klicken zum Wechseln)`;
+      button?.setAttribute('aria-label', text);
+      button?.setAttribute('title', text);
+    };
+    let theme = labels[store.get('theme-preference')] ? store.get('theme-preference') : 'system';
+    apply(theme);
+    button?.addEventListener('click', () => {
+      theme = theme === 'system' ? 'light' : theme === 'light' ? 'dark' : 'system';
+      store.set('theme-preference', theme);
+      apply(theme);
+    });
+  });
+
+  /* ---------- Navigation ---------- */
+  safe('nav', () => {
+    const nav = $('.site-nav');
+    const toggle = $('#menu-toggle');
+    if (!nav) return;
+    const setOpen = (open) => {
+      nav.classList.toggle('open', open);
+      toggle?.setAttribute('aria-expanded', String(open));
+      toggle?.setAttribute('aria-label', open ? 'Navigation schließen' : 'Navigation öffnen');
+    };
+    toggle?.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+    $$('.nav-links a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); toggle?.focus(); } });
+    document.addEventListener('click', (e) => { if (nav.classList.contains('open') && !nav.contains(e.target)) setOpen(false); });
+
+    const isHome = !!$('[data-nav]');
+    if (!isHome) return;
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 16);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // aktiven Abschnitt in der Navigation markieren
+    const links = new Map($$('[data-nav]').map((a) => [a.dataset.nav, a]));
+    const sections = $$('main section[id]').filter((s) => links.has(s.id));
+    const mark = () => {
+      const line = window.innerHeight * 0.35;
+      let current = null;
+      for (const s of sections) if (s.getBoundingClientRect().top <= line) current = s.id;
+      links.forEach((a, id) => {
+        a.classList.toggle('active', id === current);
+        if (id === current) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
       });
-      const threshold = window.innerHeight * .35;
-      const activeEntry = [...sectionStates.entries()]
-        .filter(([, state]) => state.isIntersecting)
-        .sort((left, right) => Math.abs(left[1].top - threshold) - Math.abs(right[1].top - threshold) || right[1].ratio - left[1].ratio)[0];
-      if (activeEntry) setActiveNav(activeEntry[0]);
-      else syncActiveState.run();
-    } catch (error) {
-      console.warn('Navigationsstatus konnte nicht synchronisiert werden.', error);
-    }
-  }, { rootMargin: '-35% 0px -55% 0px', threshold: [0, .2, .6, 1] });
-  sections.forEach((section) => sectionObserver.observe(section));
-  syncActiveNav(sections);
-}
-function initRevealObserver() {
-  if (typeof IntersectionObserver === 'undefined') {
-    revealAll();
-    return;
-  }
-  const revealObserver = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }), { threshold: .08 });
-  revealTargets().forEach((item) => revealObserver.observe(item));
-}
-function init() {
-  document.body.innerHTML = renderCurrentPage();
-  runEnhancement('theme', initTheme);
-  runEnhancement('navigation', initNavigation);
-  runEnhancement('nav-observer', initNavObserver, initNavScrollFallback);
-  runEnhancement('reveal-observer', initRevealObserver, revealAll);
-}
-init();
+    };
+    let frame = 0;
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(() => { frame = 0; mark(); }); };
+    mark();
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule, { passive: true });
+  });
+
+  /* ---------- Einblenden beim Scrollen ---------- */
+  safe('reveal', () => {
+    const items = $$('.reveal');
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    root.classList.add('js');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -5% 0px' });
+    items.forEach((el) => io.observe(el));
+  });
+
+  /* ---------- Alter & Jahr immer aktuell ---------- */
+  safe('dates', () => {
+    const now = new Date();
+    $$('[data-age]').forEach((el) => {
+      const [y, m, d] = el.dataset.age.split('-').map(Number);
+      let age = now.getFullYear() - y;
+      if (now.getMonth() + 1 < m || (now.getMonth() + 1 === m && now.getDate() < d)) age -= 1;
+      el.textContent = age;
+    });
+    $$('[data-year]').forEach((el) => { el.textContent = now.getFullYear(); });
+  });
+
+  /* ---------- Discord-Namen kopieren ---------- */
+  safe('copy', () => {
+    const status = $('[data-copy-status]');
+    $$('[data-copy]').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const value = btn.dataset.copy;
+        let ok = false;
+        try { await navigator.clipboard.writeText(value); ok = true; } catch { /* nicht erlaubt */ }
+        const small = $('small', btn);
+        const original = small.textContent;
+        small.textContent = ok ? 'Kopiert!' : value;
+        btn.classList.toggle('copied', ok);
+        if (status) status.textContent = ok ? `Discord-Name ${value} kopiert.` : `Discord-Name: ${value}`;
+        setTimeout(() => { small.textContent = original; btn.classList.remove('copied'); }, 2000);
+      });
+    });
+  });
+
+  /* ---------- Öffentliche GitHub-Repositories laden ---------- */
+  safe('github', () => {
+    const grid = $('[data-github-user]');
+    if (!grid || !('fetch' in window)) return;
+    const user = grid.dataset.githubUser;
+    const fallback = grid.innerHTML;
+    const CACHE_KEY = 'gh-repos-v1';
+    const MAX_AGE = 60 * 60 * 1000; // 1 Stunde
+
+    const icon = (d) => `<svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+    const starIcon = icon('<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9Z"/>');
+    const codeIcon = icon('<path d="m8 8-4 4 4 4M16 8l4 4-4 4"/>');
+    const repoIcon = icon('<path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H19v17H7.5A2.5 2.5 0 0 0 5 21.5Z"/><path d="M5 19.5V4.5"/>');
+
+    const card = (r) => {
+      const a = document.createElement('a');
+      a.className = 'repo-card';
+      a.href = r.html_url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      const title = document.createElement('strong');
+      title.innerHTML = repoIcon;
+      title.append(r.name);
+      const desc = document.createElement('p');
+      desc.textContent = r.description || 'Keine Beschreibung.';
+      const meta = document.createElement('span');
+      meta.className = 'repo-meta';
+      if (r.language) { const s = document.createElement('span'); s.innerHTML = codeIcon; s.append(r.language); meta.append(s); }
+      const st = document.createElement('span'); st.innerHTML = starIcon; st.append(String(r.stargazers_count)); meta.append(st);
+      const upd = document.createElement('span');
+      upd.textContent = `aktualisiert ${new Date(r.pushed_at).toLocaleDateString('de-DE', { month: 'short', year: 'numeric' })}`;
+      meta.append(upd);
+      a.append(title, desc, meta);
+      return a;
+    };
+
+    const render = (repos) => {
+      const list = repos
+        .filter((r) => !r.fork && !r.archived && r.name.toLowerCase() !== `${user.toLowerCase()}.github.io`)
+        .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)))
+        .slice(0, 6);
+      if (!list.length) { grid.innerHTML = fallback; return; }
+      grid.replaceChildren(...list.map(card));
+    };
+
+    try {
+      const cached = JSON.parse(store.get(CACHE_KEY) || 'null');
+      if (cached && Date.now() - cached.t < MAX_AGE) { render(cached.data); return; }
+    } catch { /* ignorieren */ }
+
+    grid.innerHTML = '<div class="repo-skeleton"></div><div class="repo-skeleton"></div><div class="repo-skeleton"></div>';
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 8000);
+    fetch(`https://api.github.com/users/${encodeURIComponent(user)}/repos?per_page=100&sort=pushed`, { signal: ctrl.signal, headers: { Accept: 'application/vnd.github+json' } })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .then((data) => {
+        const slim = data.map(({ name, description, html_url, language, stargazers_count, pushed_at, fork, archived }) => ({ name, description, html_url, language, stargazers_count, pushed_at, fork, archived }));
+        store.set(CACHE_KEY, JSON.stringify({ t: Date.now(), data: slim }));
+        render(slim);
+      })
+      .catch(() => { grid.innerHTML = fallback; })
+      .finally(() => clearTimeout(timer));
+  });
+})();

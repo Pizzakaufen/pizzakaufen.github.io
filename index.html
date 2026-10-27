@@ -1,388 +1,251 @@
 <!doctype html>
-<html lang="de" class="dark">
+<html lang="de" data-theme="system">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark light" />
-    <meta name="theme-color" content="#0b0c0e" />
-
-    <!-- Metadaten, Canonical, Open Graph und JSON-LD kommen zentral aus
-         src/config/site.config.ts (siehe scripts/vite-plugin-seo.ts) -->
-        <title>Hagen Böttcher | Developer &amp; Creator</title>
-    <meta name="description" content="Portfolio von Hagen Böttcher (Pizzakaufen) aus Dresden: Developer & Creator mit Schwerpunkt auf C#, Lua, FiveM, Android, Webentwicklung und technischen Projekten." />
+    <title>Hagen Böttcher — Developer &amp; Creator aus Dresden</title>
+    <meta name="description" content="Persönliche Website von Hagen Böttcher (Pizzakaufen) aus Dresden: Developer &amp; Creator mit Schwerpunkt auf C#, Lua, FiveM, Android und Webentwicklung." />
     <meta name="author" content="Hagen Böttcher" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://pizzakaufen.github.io/" />
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0b0c0e" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)" />
+    <meta property="og:type" content="profile" />
     <meta property="og:site_name" content="Hagen Böttcher" />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:title" content="Hagen Böttcher — Developer &amp; Creator aus Dresden" />
-    <meta property="og:description" content="Portfolio von Hagen Böttcher (Pizzakaufen) aus Dresden: Developer & Creator mit Schwerpunkt auf C#, Lua, FiveM, Android, Webentwicklung und technischen Projekten." />
+    <meta property="og:description" content="Persönliche Website von Hagen Böttcher (Pizzakaufen) aus Dresden: Developer &amp; Creator mit Schwerpunkt auf C#, Lua, FiveM, Android und Webentwicklung." />
     <meta property="og:url" content="https://pizzakaufen.github.io/" />
     <meta property="og:image" content="https://pizzakaufen.github.io/og-image.png" />
-    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Hagen Böttcher — Developer &amp; Creator aus Dresden" />
-    <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Hagen Böttcher — Developer &amp; Creator aus Dresden" />
-    <meta name="twitter:description" content="Portfolio von Hagen Böttcher (Pizzakaufen) aus Dresden: Developer & Creator mit Schwerpunkt auf C#, Lua, FiveM, Android, Webentwicklung und technischen Projekten." />
+    <meta name="twitter:description" content="Persönliche Website von Hagen Böttcher (Pizzakaufen) aus Dresden: Developer &amp; Creator mit Schwerpunkt auf C#, Lua, FiveM, Android und Webentwicklung." />
     <meta name="twitter:image" content="https://pizzakaufen.github.io/og-image.png" />
-    <meta name="twitter:image:alt" content="Hagen Böttcher — Developer &amp; Creator aus Dresden" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","name":"Hagen Böttcher — Developer & Creator aus Dresden","description":"Persönliche Website von Hagen Böttcher (NanoPizza) aus Dresden: Softwareentwicklung mit C# und .NET, FiveM-Ressourcen mit Lua und ND_Core, die Android-App eDienstplanReload sowie Webprojekte mit React und Vite.","inLanguage":"de","mainEntity":{"@type":"Person","name":"Hagen Böttcher","givenName":"Hagen","familyName":"Böttcher","alternateName":["NanoPizza","DexPizza"],"jobTitle":"Developer & Creator","birthDate":"2006-09-12","description":"Entwickler und Creator aus Dresden mit Schwerpunkt auf C#, Lua, FiveM und eigenen Softwareprojekten.","knowsAbout":["C#",".NET","Lua","FiveM","ND_Core","JavaScript","TypeScript","React","Webentwicklung","Android","Jetpack Compose","Linux","Raspberry Pi","Systemoptimierung"],"knowsLanguage":["Deutsch","Englisch"],"alumniOf":[{"@type":"EducationalOrganization","name":"Dinglingerschule Dresden"},{"@type":"EducationalOrganization","name":"BBW Leipzig"}],"address":{"@type":"PostalAddress","addressLocality":"Dresden","addressRegion":"Sachsen","addressCountry":"DE"},"sameAs":["https://github.com/Pizzakaufen","https://www.tiktok.com/@PizzakaufenPro"]}}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Hagen Böttcher","description":"Persönliche Website von Hagen Böttcher (NanoPizza) aus Dresden: Softwareentwicklung mit C# und .NET, FiveM-Ressourcen mit Lua und ND_Core, die Android-App eDienstplanReload sowie Webprojekte mit React und Vite.","inLanguage":"de","author":{"@type":"Person","name":"Hagen Böttcher"}}</script>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Hagen Böttcher","url":"https://pizzakaufen.github.io/","jobTitle":"Developer & Creator","homeLocation":{"@type":"Place","name":"Dresden, Deutschland"},"sameAs":["https://github.com/Pizzakaufen","https://www.tiktok.com/@PizzakaufenPro"]}</script>
-
-    <link rel="icon" href="./favicon.ico" sizes="32x32" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <link rel="icon" type="image/png" sizes="192x192" href="./favicon-192.png" />
-    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
-    <link rel="manifest" href="./site.webmanifest" />
-
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","name":"Hagen Böttcher — Developer & Creator aus Dresden","description":"Persönliche Website von Hagen Böttcher (Pizzakaufen) aus Dresden: Developer & Creator mit Schwerpunkt auf C#, Lua, FiveM, Android und Webentwicklung.","inLanguage":"de","url":"https://pizzakaufen.github.io/","mainEntity":{"@type":"Person","name":"Hagen Böttcher","givenName":"Hagen","familyName":"Böttcher","alternateName":["Pizzakaufen","NanoPizza","DexPizza"],"jobTitle":"Developer & Creator","birthDate":"2006-09-12","url":"https://pizzakaufen.github.io/","knowsAbout":["C#",".NET","Lua","FiveM","ND_Core","JavaScript","TypeScript","Webentwicklung","Android","Jetpack Compose","Linux","Raspberry Pi"],"knowsLanguage":["Deutsch","Englisch"],"homeLocation":{"@type":"Place","name":"Dresden, Deutschland"},"sameAs":["https://github.com/Pizzakaufen","https://www.tiktok.com/@PizzakaufenPro"]}}</script>
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem('theme-preference')||'system'}catch(e){}</script>
+    <link rel="icon" href="favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap"
-    />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;display=swap" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
   </head>
-  <body>
-    <script src="./app.js" defer></script>
-  <script data-pplx-inline-edit>
-(function () {
-  if (window === window.top) return;
+  <body id="top">
+<header class="site-nav">
+  <a class="skip" href="#main">Zum Inhalt springen</a>
+  <div class="container nav-inner">
+    <a class="brand" href="#home" aria-label="Hagen Böttcher, Startseite"><span class="logo" aria-hidden="true">H</span><span>Hagen Böttcher</span></a>
+    <nav aria-label="Hauptnavigation" id="site-menu" class="nav-menu">
+      <ul class="nav-links" role="list"><li><a href="#about" data-nav="about">Über mich</a></li><li><a href="#skills" data-nav="skills">Skills</a></li><li><a href="#projects" data-nav="projects">Projekte</a></li><li><a href="#github" data-nav="github">GitHub</a></li><li><a href="#contact" data-nav="contact">Kontakt</a></li></ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-button" id="theme-toggle" type="button" aria-label="Farbschema: System" title="Farbschema: System">
+      <span class="theme-icon" data-for="system"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span><span class="theme-icon" data-for="light"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span><span class="theme-icon" data-for="dark"><svg class="icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg></span>
+    </button>
+      <button class="icon-button menu-button" id="menu-toggle" type="button" aria-label="Navigation öffnen" aria-controls="site-menu" aria-expanded="false">
+        <span class="menu-open"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span><span class="menu-close"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section id="home" class="hero">
+  <div class="hero-grid container">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Dresden, Deutschland · Pizzakaufen</p>
+      <h1>Hallo, ich bin <span class="accent">Hagen.</span></h1>
+      <p class="hero-role">Developer &amp; Creator</p>
+      <p class="lead">Ich entwickle eigene Software, Systeme und technische Projekte — von Anwendungen in C# über FiveM-Ressourcen in Lua bis zu Android- und Webprojekten.</p>
+      <div class="actions">
+        <a class="button primary" href="#projects">Meine Projekte <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="button" href="#contact">Kontakt aufnehmen</a>
+      </div>
+      <ul class="hero-socials" role="list" aria-label="Profile">
+        <li><a href="https://github.com/Pizzakaufen" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li>
+        <li><a href="https://www.tiktok.com/@PizzakaufenPro" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg></a></li>
+        <li><a href="mailto:hagen@con-meo.de" aria-label="E-Mail"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg></a></li>
+      </ul>
+    </div>
+    <div class="hero-profile">
+      <div class="avatar-hero" role="img" aria-label="H-Monogramm für Hagen Böttcher"><span aria-hidden="true">H</span></div>
+      <div class="hero-profile-card">
+        <p class="profile-status"><span class="mono">~/profil</span><span class="mono live">aktiv</span></p>
+        <dl class="facts"><div><dt>Name</dt><dd>Hagen Böttcher</dd></div><div><dt>Profilname</dt><dd>Pizzakaufen · NanoPizza · DexPizza</dd></div><div><dt>Alter</dt><dd><span data-age="2006-09-12">20</span> Jahre</dd></div><div><dt>Ort</dt><dd>Dresden, Deutschland</dd></div></dl>
+      </div>
+    </div>
+  </div>
+</section>
 
-  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
-  const MAX_FONT_BYTES = 500 * 1024;
-  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
-  let scrollForwarding = false;
-  let scrollRaf = 0;
-  let trustedTopOrigin = null;
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-heading reveal"><p class="mono">01 — Profil</p><h2>Über mich</h2><p class="section-lead">Ich bin Hagen und beschäftige mich hauptsächlich mit Softwareentwicklung, Webentwicklung, FiveM und moderner Computertechnik. Ich probiere gerne neue Technologien aus und arbeite an eigenen Projekten.</p></div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>Mein Schwerpunkt liegt auf praktischen Lösungen: eigene Anwendungen, Scripts und technische Systeme, die ich von der Idee bis zur Weiterentwicklung selbst begleite.</p>
+        <p>Ich entwickle seit mehreren Jahren; C# und Lua gehören zu den Technologien, mit denen ich am längsten arbeite.</p>
+        <p>Mich interessieren technische Themen besonders dann, wenn daraus etwas Eigenes entsteht: eine Anwendung, ein System, ein Script oder eine Website, die im Alltag funktioniert.</p>
+      </div>
+      <div class="profile-card reveal">
+        <div class="profile-head"><div class="avatar-small" role="img" aria-label="H-Monogramm für Hagen Böttcher"><span aria-hidden="true">H</span></div><div><p class="mono">Kurzprofil</p><p class="profile-name">Hagen Böttcher</p></div></div>
+        <dl class="facts"><div><dt>Name</dt><dd>Hagen Böttcher</dd></div><div><dt>Profilname</dt><dd>Pizzakaufen · NanoPizza · DexPizza</dd></div><div><dt>Alter</dt><dd><span data-age="2006-09-12">20</span> Jahre</dd></div><div><dt>Ort</dt><dd>Dresden, Deutschland</dd></div><div><dt>Sprachen</dt><dd>Deutsch · Englisch</dd></div><div><dt>Fokus</dt><dd>C# · Lua · FiveM · Android</dd></div></dl>
+      </div>
+    </div>
+    <div class="focus-grid">
+      <article class="card reveal"><span class="card-num" aria-hidden="true">01</span><h3>Softwareentwicklung</h3><p>Eigene Anwendungen und Tools in C# und .NET, dazu die Optimierung bestehender Software.</p></article>
+      <article class="card reveal"><span class="card-num" aria-hidden="true">02</span><h3>FiveM Development</h3><p>Eigene Ressourcen, Scripts und Systeme in Lua für Roleplay-Server auf Basis von ND_Core.</p></article>
+      <article class="card reveal"><span class="card-num" aria-hidden="true">03</span><h3>Android &amp; Web</h3><p>Die Dienstplan-App eDienstplanReload mit Jetpack Compose sowie Webprojekte.</p></article>
+      <article class="card reveal"><span class="card-num" aria-hidden="true">04</span><h3>Technik &amp; Systeme</h3><p>PC-Hardware, Linux, Raspberry Pi, Serververwaltung und Systemoptimierung.</p></article>
+    </div>
+    <div class="about-lower">
+      <div class="reveal">
+        <h3 class="mono">Werdegang</h3>
+        <ol class="timeline">
+          <li><span class="timeline-kind">Schule</span><h4>Förderschulabschluss <span>· Dinglingerschule Dresden</span></h4><p>Schulischer Abschluss in Dresden.</p></li>
+          <li><span class="timeline-kind">BVB</span><h4>Berufsvorbereitungsjahr</h4><p>Berufsvorbereitung im Anschluss an die Schule.</p></li>
+          <li><span class="timeline-kind">Ausbildung</span><h4>BBW Leipzig</h4><p>Weiterführende Ausbildung im Berufsbildungswerk Leipzig.</p></li>
+          <li><span class="timeline-kind">Praktikum</span><h4>Praktische Erfahrungen <span>· Lloyd’s Café &amp; Bar</span></h4><p>Praktische Erfahrung unter anderem im Küchenbereich.</p></li>
+          <li><span class="timeline-kind">Heute</span><h4>Eigene Softwareentwicklung</h4><p>Eigene Anwendungen, Scripts, Systeme und technische Projekte.</p></li>
+        </ol>
+      </div>
+      <div class="interest-stack">
+        <article class="card reveal"><h3 class="mono">Interessen</h3><ul class="badges" role="list"><li class="badge">FiveM &amp; Roleplay</li><li class="badge">eigene technische Projekte</li><li class="badge">Computer &amp; Hardware</li><li class="badge">Android &amp; Samsung</li><li class="badge">Linux</li><li class="badge">Webseiten</li><li class="badge">Systemoptimierung</li></ul></article>
+        <article class="card reveal"><h3 class="mono">Ziele</h3><p>Eigene Software- und Webprojekte weiterentwickeln, neue technische Fähigkeiten aufbauen und professionelle eigene Projekte umsetzen.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
 
-  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
-  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
-  // across multiple labels.
-  function matchesAllowedOrigin(origin) {
-    if (!origin) return false;
-    for (const entry of allowedParentOrigins) {
-      if (!entry.includes("*")) {
-        if (entry === origin) return true;
-        continue;
-      }
-      const pattern = new RegExp(
-        "^" +
-          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
-          "$",
-      );
-      if (pattern.test(origin)) return true;
-    }
-    return false;
-  }
+<section id="skills" class="section section-alt">
+  <div class="container">
+    <div class="section-heading reveal"><p class="mono">02 — Stack</p><h2>Skills</h2><p class="section-lead">Technologien, mit denen ich regelmäßig arbeite — sortiert nach Einsatzbereich.</p></div>
+    <div class="skill-grid">
+      <article class="skill-card reveal"><h3>Programmiersprachen</h3><p>C# und Lua nutze ich am längsten</p><ul class="badges" role="list"><li class="badge">C#</li><li class="badge">Lua</li><li class="badge">JavaScript</li><li class="badge">TypeScript</li><li class="badge">HTML</li><li class="badge">CSS</li></ul></article>
+      <article class="skill-card reveal"><h3>Frameworks</h3><ul class="badges" role="list"><li class="badge">.NET</li><li class="badge">React</li><li class="badge">Vite</li><li class="badge">Jetpack Compose</li><li class="badge">Material 3</li><li class="badge">ND_Core</li></ul></article>
+      <article class="skill-card reveal"><h3>Plattformen</h3><ul class="badges" role="list"><li class="badge">Windows</li><li class="badge">Linux</li><li class="badge">Android</li><li class="badge">FiveM</li><li class="badge">FXServer</li><li class="badge">Raspberry Pi</li><li class="badge">macOS</li></ul></article>
+      <article class="skill-card reveal"><h3>Werkzeuge</h3><ul class="badges" role="list"><li class="badge">Git</li><li class="badge">GitHub</li><li class="badge">Visual Studio</li><li class="badge">txAdmin</li><li class="badge">Pterodactyl</li><li class="badge">OpenCore</li><li class="badge">Linux-Terminal</li></ul></article>
+      <article class="skill-card reveal"><h3>Sprachen</h3><p>gesprochen</p><ul class="badges" role="list"><li class="badge">Deutsch</li><li class="badge">Englisch</li></ul></article>
+    </div>
+  </div>
+</section>
 
-  // Trust decision: when the sender is same-origin-visible (event.origin is a
-  // real origin like https://www.perplexity.ai) we trust event.origin directly.
-  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
-  // broker's stamped `parentOrigin` to identify the top window. The fallback
-  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
-  // on the response path (see postToTrustedTop) to ensure replies can't be
-  // delivered to anyone but the actual top window of that claimed origin.
-  function getTrustedParentOrigin(event) {
-    const forwardedParentOrigin =
-      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
-    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
-    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
-  }
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-heading reveal"><p class="mono">03 — Arbeit</p><h2>Projekte</h2><p class="section-lead">Eine Auswahl an Dingen, die ich gebaut habe oder gerade baue.</p></div>
+    <div class="projects-grid">
+      <article class="project-card reveal featured" id="projekt-edienstplanreload">
+  <div class="project-top">
+    <div><p class="mono">Android · App</p><h3>eDienstplanReload</h3></div>
+    <span class="status" data-status="In Weiterentwicklung">In Weiterentwicklung</span>
+  </div>
+  <p class="project-desc">Persönliche Weiterentwicklung einer Dienstplan-App für die Verwaltung und Darstellung von Arbeitszeiten und Dienstplänen — mit einem modernen, an One UI orientierten Android-Design.</p>
+  
+  <div class="project-detail">
+    <p class="mono">Ziel</p>
+    <div><p class="goal">Dienstpläne und Arbeitszeiten übersichtlich, modern und auch offline nutzbar darstellen.</p><ul><li>Oberfläche orientiert an One UI 8.5 und Android 16</li><li>Dark Mode, Light Mode und eigene Themes</li><li>Lokale Speicherung, offline nutzbar</li><li>Server- und API-Komponenten aus früheren Versionen</li><li>Weiterentwicklung der Dienstplan- und Benutzerfunktionen</li></ul></div>
+  </div>
+  <ul class="badges" role="list"><li class="badge">Android</li><li class="badge">Jetpack Compose</li><li class="badge">Material 3</li><li class="badge">Offline-Speicherung</li><li class="badge">API</li></ul>
+  
+</article>
+<article class="project-card reveal featured" id="projekt-fivem-development">
+  <div class="project-top">
+    <div><p class="mono">FiveM · Lua · Server</p><h3>FiveM Development</h3></div>
+    <span class="status" data-status="Laufende Entwicklung">Laufende Entwicklung</span>
+  </div>
+  <p class="project-desc">Eigene FiveM-Ressourcen, Scripts und Systeme für Roleplay-Server. Schwerpunkt auf Lua, Server- und Client-Systemen, UI und Framework-Integration.</p>
+  
+  <div class="project-detail">
+    <p class="mono">Ziel</p>
+    <div><p class="goal">Eigene technische Systeme für Roleplay-Server entwickeln und in der Praxis weiter verbessern.</p><ul><li>Eigene Scripts und Ressourcen</li><li>HUDs und NUI-Oberflächen</li><li>Gameplay-Systeme, unter anderem ein Taser-System</li><li>Serverfunktionen und Server-Client-Logik</li><li>Framework-Integration mit ND_Core — kein ESX oder QBCore</li></ul></div>
+  </div>
+  <ul class="badges" role="list"><li class="badge">Lua</li><li class="badge">C#</li><li class="badge">FiveM</li><li class="badge">FXServer</li><li class="badge">ND_Core</li><li class="badge">NUI</li><li class="badge">HTML</li><li class="badge">CSS</li><li class="badge">JavaScript</li></ul>
+  
+</article>
+<article class="project-card reveal" id="projekt-website">
+  <div class="project-top">
+    <div><p class="mono">Web · Portfolio</p><h3>Diese Website</h3></div>
+    <span class="status" data-status="Aktiv">Aktiv</span>
+  </div>
+  <p class="project-desc">Meine persönliche Website: statisch gebaut, ohne Tracking, mit hellem, dunklem und System-Farbschema.</p>
+  
+  <div class="project-detail">
+    <p class="mono">Ziel</p>
+    <div><p class="goal">Eine schnelle, persönliche und leicht pflegbare Präsentation meiner Arbeit.</p><ul><li>Semantisches HTML und responsives CSS</li><li>Vanilla JavaScript ohne Abhängigkeiten</li><li>Eigene Seiten für Impressum, Datenschutz und 404</li></ul></div>
+  </div>
+  <ul class="badges" role="list"><li class="badge">HTML</li><li class="badge">CSS</li><li class="badge">JavaScript</li></ul>
+  <div class="project-actions"><a class="button small" href="https://github.com/Pizzakaufen/pizzakaufen.github.io" target="_blank" rel="noopener noreferrer"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg> Code ansehen</a></div>
+</article>
+<article class="project-card reveal" id="projekt-weitere-arbeiten">
+  <div class="project-top">
+    <div><p class="mono">Systeme · Experimente</p><h3>Weitere Arbeiten</h3></div>
+    <span class="status" data-status="Laufende Entwicklung">Laufende Entwicklung</span>
+  </div>
+  <p class="project-desc">Kleinere Arbeiten aus denselben Bereichen: frühere FiveM-Ressourcen, Android-Projekte, Webprojekte, Serverprojekte und Systemoptimierungen.</p>
+  
+  <div class="project-detail">
+    <p class="mono">Ziel</p>
+    <div><p class="goal">Technische Ideen ausprobieren, Erfahrungen sammeln und bestehende Systeme verbessern.</p><ul><li>Serververwaltung mit txAdmin und Pterodactyl</li><li>Linux- und Raspberry-Pi-Setups</li><li>macOS-Installationen mit OpenCore</li></ul></div>
+  </div>
+  <ul class="badges" role="list"><li class="badge">C#</li><li class="badge">.NET</li><li class="badge">Lua</li><li class="badge">Linux</li><li class="badge">Raspberry Pi</li></ul>
+  
+</article>
+    </div>
+  </div>
+</section>
 
-  // All responses go to window.top with targetOrigin = the allowlisted origin.
-  // An attacker that iframes us inside their own null-origin broker can claim
-  // any parentOrigin they like, but the browser will drop the reply whenever
-  // the real top's origin doesn't match — so the screenshot never leaves.
-  function postToTrustedTop(message) {
-    if (!trustedTopOrigin) return;
-    try {
-      window.top.postMessage(message, trustedTopOrigin);
-    } catch (_error) {}
-  }
+<section id="github" class="section section-alt">
+  <div class="container">
+    <div class="section-heading reveal"><p class="mono">04 — Open Source</p><h2>Auf GitHub</h2><p class="section-lead">Meine öffentlichen Repositories — direkt von GitHub geladen.</p></div>
+    <div class="repo-grid" data-github-user="Pizzakaufen" aria-live="polite">
+      <p class="repo-fallback">Die aktuellen Repositories findest du auf <a href="https://github.com/Pizzakaufen" target="_blank" rel="noopener noreferrer">github.com/Pizzakaufen</a>.</p>
+    </div>
+    <div class="github-band reveal">
+      <div><p class="mono">github.com/Pizzakaufen</p><p class="band-title">Alle Projekte, Scripts und Experimente</p></div>
+      <a class="button primary" href="https://github.com/Pizzakaufen" target="_blank" rel="noopener noreferrer"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg> GitHub öffnen</a>
+    </div>
+  </div>
+</section>
 
-  function inlineAll(original, clone) {
-    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
-
-    try {
-      const computedStyle = getComputedStyle(original);
-      // cssText on a computed style is the serialized declaration in modern
-      // Chromium/Safari — a single read beats enumerating ~400 longhand
-      // properties. Firefox returns "" here, so we fall back on empty.
-      const serialized = computedStyle.cssText;
-      if (serialized) {
-        clone.style.cssText = serialized;
-      } else {
-        const parts = new Array(computedStyle.length);
-        for (let index = 0; index < computedStyle.length; index += 1) {
-          const property = computedStyle[index];
-          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
-        }
-        clone.style.cssText = parts.join("");
-      }
-    } catch (_error) {}
-
-    const originalChildren = original.children;
-    const clonedChildren = clone.children;
-    for (
-      let index = 0;
-      index < originalChildren.length && index < clonedChildren.length;
-      index += 1
-    ) {
-      inlineAll(originalChildren[index], clonedChildren[index]);
-    }
-  }
-
-  function extractFontUrl(srcValue) {
-    const matches = [
-      ...srcValue.matchAll(
-        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
-      ),
-    ];
-    if (matches.length === 0) return null;
-    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
-    if (woff2) return woff2[1];
-    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
-    if (woff) return woff[1];
-    return matches[0][1];
-  }
-
-  // Cache resolved font URL -> data URI across captures. Fonts on a page
-  // essentially never change, and a batch run emits multiple captures back to
-  // back — without this we'd refetch + re-base64 every time.
-  const fontDataUriCache = new Map();
-  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
-
-  async function fetchAsDataUri(url) {
-    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
-    let dataUri = null;
-    try {
-      const response = await fetch(url, { mode: "cors", credentials: "omit" });
-      if (response.ok) {
-        const blob = await response.blob();
-        if (blob.size <= MAX_FONT_BYTES) {
-          dataUri = await new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onloadend = () =>
-              resolve(typeof reader.result === "string" ? reader.result : null);
-            reader.onerror = () => resolve(null);
-            reader.readAsDataURL(blob);
-          });
-        }
-      }
-    } catch (_error) {
-      dataUri = null;
-    }
-    fontDataUriCache.set(url, dataUri);
-    return dataUri;
-  }
-
-  function collectFontFaceRuleTexts() {
-    const rules = [];
-    for (const sheet of document.styleSheets) {
-      let cssRules;
-      try {
-        cssRules = sheet.cssRules;
-      } catch (_error) {
-        continue;
-      }
-      if (!cssRules) continue;
-      for (const rule of cssRules) {
-        const cssText = rule.cssText || "";
-        if (cssText.startsWith("@font-face")) rules.push(cssText);
-      }
-    }
-    return rules;
-  }
-
-  async function buildInlinedFontCss() {
-    const ruleTexts = collectFontFaceRuleTexts();
-    if (ruleTexts.length === 0) return null;
-
-    const resolved = ruleTexts.map((cssText) => {
-      if (!SRC_DECLARATION_RE.test(cssText)) return null;
-      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
-      if (!srcMatch) return null;
-      const url = extractFontUrl(srcMatch[1]);
-      if (!url) return null;
-      try {
-        return { cssText, url: new URL(url, document.baseURI).href };
-      } catch (_error) {
-        return null;
-      }
-    });
-
-    const dataUris = await Promise.all(
-      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
-    );
-
-    const inlined = [];
-    let totalBytes = 0;
-    for (let index = 0; index < resolved.length; index += 1) {
-      const entry = resolved[index];
-      const dataUri = dataUris[index];
-      if (!entry || !dataUri) continue;
-      const approxBytes = dataUri.length * 0.75;
-      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
-      totalBytes += approxBytes;
-      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
-    }
-    return inlined.length > 0 ? inlined.join("\n") : null;
-  }
-
-  function stripExternal(clone) {
-    const images = clone.querySelectorAll("img");
-    for (let index = 0; index < images.length; index += 1) {
-      const src = images[index].getAttribute("src");
-      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
-    }
-
-    const elements = clone.querySelectorAll("*");
-    for (let index = 0; index < elements.length; index += 1) {
-      const style = elements[index].style.cssText;
-      if (style && style.includes("url(")) {
-        elements[index].style.cssText = style.replace(
-          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
-          "none",
-        );
-      }
-    }
-  }
-
-  function emitScroll() {
-    scrollRaf = 0;
-    if (!scrollForwarding) return;
-    postToTrustedTop({
-      type: "INLINE_EDIT_SCROLL",
-      scrollX: window.scrollX,
-      scrollY: window.scrollY,
-    });
-  }
-
-  window.addEventListener(
-    "scroll",
-    function () {
-      if (!scrollForwarding || scrollRaf) return;
-      scrollRaf = requestAnimationFrame(emitScroll);
-    },
-    { passive: true, capture: true },
-  );
-
-  async function handleCaptureRequest(event) {
-    const requestId = event.data.requestId;
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    function postResult(dataUrl) {
-      postToTrustedTop({
-        type: "INLINE_EDIT_SCREENSHOT_RESULT",
-        requestId,
-        dataUrl,
-        scrollX,
-        scrollY,
-      });
-    }
-
-    try {
-      // Wait for any pending web fonts to resolve so both inline metrics and
-      // the @font-face inlining below see the same loaded faces.
-      if (document.fonts && document.fonts.ready) {
-        try {
-          await document.fonts.ready;
-        } catch (_error) {}
-      }
-
-      const clone = document.documentElement.cloneNode(true);
-      inlineAll(document.documentElement, clone);
-
-      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
-      for (let index = 0; index < removedNodes.length; index += 1) {
-        removedNodes[index].remove();
-      }
-
-      stripExternal(clone);
-
-      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
-      // can resolve them — external font URLs aren't fetched during
-      // foreignObject rendering, which would otherwise force a fallback face
-      // and change text metrics.
-      const inlinedFontCss = await buildInlinedFontCss();
-      if (inlinedFontCss) {
-        const styleEl = document.createElement("style");
-        styleEl.textContent = inlinedFontCss;
-        const head = clone.querySelector("head");
-        if (head) head.appendChild(styleEl);
-        else clone.insertBefore(styleEl, clone.firstChild);
-      }
-
-      const html = new XMLSerializer().serializeToString(clone);
-      const svg =
-        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
-        '<foreignObject width="100%" height="100%">' +
-        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
-        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
-        html +
-        "</div></div></foreignObject></svg>";
-      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-      const image = new Image();
-      image.onload = function () {
-        const canvas = document.createElement("canvas");
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext("2d").drawImage(image, 0, 0);
-        postResult(canvas.toDataURL("image/png"));
-      };
-      image.onerror = function () {
-        postResult(null);
-      };
-      image.src = svgUrl;
-    } catch (_error) {
-      postResult(null);
-    }
-  }
-
-  window.addEventListener("message", function (event) {
-    if (!event.data) return;
-    // Only accept messages from the direct parent frame. Blocks sibling /
-    // unrelated-window postMessage senders that could otherwise reach us.
-    if (event.source !== window.parent) return;
-
-    const trustedParentOrigin = getTrustedParentOrigin(event);
-    if (!trustedParentOrigin) return;
-    trustedTopOrigin = trustedParentOrigin;
-
-    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
-      scrollForwarding = true;
-      emitScroll();
-      return;
-    }
-
-    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
-      scrollForwarding = false;
-      if (scrollRaf) cancelAnimationFrame(scrollRaf);
-      scrollRaf = 0;
-      return;
-    }
-
-    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
-
-    handleCaptureRequest(event);
-  });
-})();
-
-
-</script></body>
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-heading reveal"><p class="mono">05 — Kontakt</p><h2>Lass uns reden</h2><p class="section-lead">Fragen zu einem Projekt, eine Idee oder einfach Hallo sagen? Am schnellsten erreichst du mich per E-Mail oder Discord.</p></div>
+    <div class="contact-grid">
+  <a class="contact-card reveal" href="mailto:hagen@con-meo.de"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg><span><strong>E-Mail</strong><small>hagen@con-meo.de</small></span><span class="contact-go"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+  <a class="contact-card reveal" href="https://github.com/Pizzakaufen" target="_blank" rel="noopener noreferrer"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg><span><strong>GitHub</strong><small>github.com/Pizzakaufen</small></span><span class="contact-go"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+  <a class="contact-card reveal" href="https://www.tiktok.com/@PizzakaufenPro" target="_blank" rel="noopener noreferrer"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg><span><strong>TikTok</strong><small>@PizzakaufenPro</small></span><span class="contact-go"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+  <button class="contact-card reveal" type="button" data-copy="Pizzakaufen" aria-describedby="discord-hint"><svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8.5 7.5c2.3-.7 4.7-.7 7 0M8 16.5c2.6.9 5.4.9 8 0"/><path d="M15.5 17.5 17 20c2-.6 3.6-1.6 5-3 .3-3.8-.6-7.4-2.6-10.6A15 15 0 0 0 16 5l-.6 1.3M8.5 17.5 7 20c-2-.6-3.6-1.6-5-3-.3-3.8.6-7.4 2.6-10.6A15 15 0 0 1 8 5l.6 1.3"/><circle cx="9" cy="12.5" r="1.2"/><circle cx="15" cy="12.5" r="1.2"/></svg><span><strong>Discord</strong><small>Pizzakaufen</small></span><span class="contact-go" data-copy-label><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg></span></button>
+</div>
+<p class="hint" id="discord-hint">Discord: Klick kopiert den Benutzernamen.</p>
+<p class="visually-hidden" role="status" aria-live="polite" data-copy-status></p>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-about">
+      <a class="brand" href="#home" aria-label="Hagen Böttcher, Startseite"><span class="logo" aria-hidden="true">H</span><span>Hagen Böttcher</span></a>
+      <p>Developer &amp; Creator aus Dresden.<br />Ohne Tracking, ohne Cookies.</p>
+    </div>
+    <nav aria-label="Seitenbereiche">
+      <p class="mono">Navigation</p>
+      <ul role="list"><li><a href="#about">Über mich</a></li><li><a href="#projects">Projekte</a></li><li><a href="#contact">Kontakt</a></li></ul>
+    </nav>
+    <nav aria-label="Profile und Rechtliches">
+      <p class="mono">Profile &amp; Rechtliches</p>
+      <ul role="list"><li><a href="https://github.com/Pizzakaufen" target="_blank" rel="noopener noreferrer">GitHub</a></li><li><a href="https://www.tiktok.com/@PizzakaufenPro" target="_blank" rel="noopener noreferrer">TikTok</a></li><li><a href="impressum/">Impressum</a></li><li><a href="datenschutz/">Datenschutz</a></li></ul>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span data-year>2026</span> Hagen Böttcher</p>
+    <a class="to-top" href="#top">Nach oben <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+  </div>
+</footer>
+  </body>
 </html>
